@@ -75,8 +75,8 @@ function Index() {
               Feita com carinho, para reunir quem você ama.
             </h1>
             <p className="mt-6 max-w-xl text-lg text-cream/80">
-              Ingredientes selecionados, sabor que fica. Delivery e retirada de terça a domingo,
-              das 18h às 22h.
+              Massa artesanal, ingredientes selecionados e aquele sabor que fica no coração.
+              Delivery de terça a domingo, das 18h às 22h.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
