@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CardapioRouteImport } from './routes/cardapio'
 import { Route as ContatoRouteImport } from './routes/contato'
+import { Route as HistoriaRouteImport } from './routes/historia'
 import { Route as PedidoRouteImport } from './routes/pedido'
 
 const IndexRoute = IndexRouteImport.update({
@@ -29,6 +30,11 @@ const ContatoRoute = ContatoRouteImport.update({
   path: '/contato',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HistoriaRoute = HistoriaRouteImport.update({
+  id: '/historia',
+  path: '/historia',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PedidoRoute = PedidoRouteImport.update({
   id: '/pedido',
   path: '/pedido',
@@ -39,12 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cardapio': typeof CardapioRoute
   '/contato': typeof ContatoRoute
+  '/historia': typeof HistoriaRoute
   '/pedido': typeof PedidoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cardapio': typeof CardapioRoute
   '/contato': typeof ContatoRoute
+  '/historia': typeof HistoriaRoute
   '/pedido': typeof PedidoRoute
 }
 export interface FileRoutesById {
@@ -52,20 +60,22 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/cardapio': typeof CardapioRoute
   '/contato': typeof ContatoRoute
+  '/historia': typeof HistoriaRoute
   '/pedido': typeof PedidoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/cardapio' | '/contato' | '/pedido'
+  fullPaths: '/' | '/cardapio' | '/contato' | '/historia' | '/pedido'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cardapio' | '/contato' | '/pedido'
-  id: '__root__' | '/' | '/cardapio' | '/contato' | '/pedido'
+  to: '/' | '/cardapio' | '/contato' | '/historia' | '/pedido'
+  id: '__root__' | '/' | '/cardapio' | '/contato' | '/historia' | '/pedido'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CardapioRoute: typeof CardapioRoute
   ContatoRoute: typeof ContatoRoute
+  HistoriaRoute: typeof HistoriaRoute
   PedidoRoute: typeof PedidoRoute
 }
 
@@ -92,6 +102,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContatoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/historia': {
+      id: '/historia'
+      path: '/historia'
+      fullPath: '/historia'
+      preLoaderRoute: typeof HistoriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pedido': {
       id: '/pedido'
       path: '/pedido'
@@ -106,6 +123,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CardapioRoute: CardapioRoute,
   ContatoRoute: ContatoRoute,
+  HistoriaRoute: HistoriaRoute,
   PedidoRoute: PedidoRoute,
 }
 export const routeTree = rootRouteImport
