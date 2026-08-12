@@ -101,7 +101,7 @@ function Index() {
         <div className="mx-auto grid max-w-6xl gap-6 px-4 py-10 sm:grid-cols-3 sm:px-6">
           {[
             { t: "Ingredientes selecionados", d: "Sabor que fica em cada fatia." },
-            { t: "Delivery e retirada", d: "Escolha como preferir receber." },
+            { t: "Delivery", d: "Peça e receba em casa." },
             { t: "Ter a Dom · 18h — 22h", d: "Aberto todas as noites, menos segunda." },
           ].map((h) => (
             <div key={h.t} className="text-center sm:text-left">
