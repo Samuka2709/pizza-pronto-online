@@ -10,6 +10,7 @@ import {
 import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import logo from "../assets/cerqueiras-logo.jpg.asset.json";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -77,18 +78,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Forno D'Oro — Pizzaria Artesanal" },
+      { title: "Cerqueira's Pizza — Pizzaria em Ilhéus/BA" },
       {
         name: "description",
         content:
-          "Pizzaria artesanal com forno a lenha em Salvador. Massa de fermentação natural, ingredientes frescos e entrega rápida.",
+          "Feita com carinho, para reunir quem você ama. Pizzaria em Cururupe, Ilhéus/BA. Delivery e retirada, terça a domingo das 18h às 22h.",
       },
-      { name: "author", content: "Forno D'Oro" },
-      { property: "og:title", content: "Forno D'Oro — Pizzaria Artesanal" },
+      { name: "author", content: "Cerqueira's Pizza" },
+      { property: "og:title", content: "Cerqueira's Pizza — Pizzaria em Ilhéus/BA" },
       {
         property: "og:description",
         content:
-          "Pizzaria artesanal com forno a lenha em Salvador. Massa de fermentação natural, ingredientes frescos e entrega rápida.",
+          "Feita com carinho, para reunir quem você ama. Delivery e retirada em Cururupe, Ilhéus/BA.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -101,7 +102,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap",
       },
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
     ],
   }),
   shellComponent: RootShell,
