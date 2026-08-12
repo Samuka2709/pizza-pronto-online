@@ -218,11 +218,11 @@ function Footer() {
         <div className="grid gap-8 md:grid-cols-3">
           <div>
             <p className="font-display text-lg font-bold text-cream">
-              Forno <span className="gold-text">D'Oro</span>
+              Cerqueira's <span className="gold-text">Pizza</span>
             </p>
             <p className="mt-2 max-w-xs text-sm text-muted-foreground">
-              Pizzaria artesanal com forno a lenha. Massa de fermentação natural, ingredientes
-              frescos e muito amor em cada pizza.
+              Feita com carinho, para reunir quem você ama. Ingredientes selecionados, sabor que
+              fica.
             </p>
           </div>
           <div>
@@ -240,31 +240,33 @@ function Footer() {
           <div>
             <p className="text-xs font-semibold uppercase tracking-widest text-gold">Contato</p>
             <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-              <li>Rua das Pizzas, 123 — Salvador, BA</li>
-              <li>(71) 3333-4444</li>
-              <li>Ter a Dom · 18h — 23h30</li>
+              <li>Cururupe — Ilhéus / BA</li>
+              <li>Delivery e retirada</li>
+              <li>Ter a Dom · 18h — 22h</li>
               <li>
                 <a
-                  href="https://wa.me/5571999990000"
+                  href="https://wa.me/message/DIYAGYHKRP3KC1"
                   className="transition-colors hover:text-cream"
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   WhatsApp
                 </a>
                 {" · "}
                 <a
-                  href="https://www.ifood.com.br"
+                  href="https://www.instagram.com/cerqueiraspizza"
                   className="transition-colors hover:text-cream"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  iFood
+                  Instagram
                 </a>
               </li>
             </ul>
           </div>
         </div>
         <div className="mt-10 border-t border-border/60 pt-6 text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Forno D'Oro Pizzaria. Todos os direitos reservados.
+          © {new Date().getFullYear()} Cerqueira's Pizza. Todos os direitos reservados.
         </div>
       </div>
     </footer>
