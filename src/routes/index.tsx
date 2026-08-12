@@ -51,7 +51,7 @@ function Index() {
         <div className="absolute inset-0">
           <img
             src={heroPizza}
-            alt="Pizza artesanal da Cerqueira's Pizza saindo do forno"
+            alt="Pizza de lombinho com cream cheese e geleia de amora da Cerqueira's Pizza"
             width={1600}
             height={1008}
             className="h-full w-full object-cover"
