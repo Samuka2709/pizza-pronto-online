@@ -3,17 +3,16 @@ import { createFileRoute } from "@tanstack/react-router";
 export const Route = createFileRoute("/contato")({
   head: () => ({
     meta: [
-      { title: "Localização & Contato — Forno D'Oro Pizzaria" },
+      { title: "Localização & Contato — Cerqueira's Pizza" },
       {
         name: "description",
         content:
-          "Visite a Forno D'Oro em Salvador. Endereço, horários, telefone e mapa para a pizzaria artesanal com forno a lenha.",
+          "Cerqueira's Pizza em Cururupe, Ilhéus/BA. Horários de terça a domingo das 18h às 22h, WhatsApp, Instagram e mapa.",
       },
-      { property: "og:title", content: "Localização & Contato — Forno D'Oro Pizzaria" },
+      { property: "og:title", content: "Localização & Contato — Cerqueira's Pizza" },
       {
         property: "og:description",
-        content:
-          "Endereço, horários, telefone e mapa para a Forno D'Oro em Salvador.",
+        content: "Cururupe, Ilhéus/BA. Terça a domingo, 18h às 22h. Delivery e retirada.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -23,16 +22,14 @@ export const Route = createFileRoute("/contato")({
 });
 
 const infos = [
-  { label: "Endereço", value: "Rua das Pizzas, 123 — Barra, Salvador / BA, 40140-000" },
-  { label: "Telefone", value: "(71) 3333-4444" },
-  { label: "WhatsApp", value: "(71) 99999-0000" },
-  { label: "E-mail", value: "ola@fornodoro.com.br" },
+  { label: "Bairro", value: "Cururupe — Ilhéus / BA" },
+  { label: "WhatsApp", value: "wa.me/message/DIYAGYHKRP3KC1" },
+  { label: "Instagram", value: "@cerqueiraspizza" },
+  { label: "Atendimento", value: "Delivery e retirada" },
 ];
 
 const hours = [
-  { d: "Terça a Quinta", h: "18h — 23h" },
-  { d: "Sexta e Sábado", h: "18h — 23h30" },
-  { d: "Domingo", h: "18h — 23h" },
+  { d: "Terça a domingo", h: "18h — 22h" },
   { d: "Segunda", h: "Fechado" },
 ];
 
@@ -45,24 +42,22 @@ function Contato() {
         </p>
         <h1 className="mt-3 font-display text-5xl font-bold text-cream">Venha nos visitar</h1>
         <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-          Estamos na Barra, em Salvador. Passe para comer no local ou peça para entrega.
+          Estamos em Cururupe, Ilhéus/BA. Retire na pizzaria ou peça delivery.
         </p>
         <div className="mx-auto mt-6 h-px max-w-xs hairline-gold" />
       </header>
 
       <div className="mt-16 grid gap-10 md:grid-cols-2">
-        {/* Map */}
         <div className="overflow-hidden rounded-2xl border border-border/60">
           <iframe
-            title="Mapa da Forno D'Oro Pizzaria"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=-38.6650%2C-13.0120%2C-38.6320%2C-12.9890&layer=mapnik&marker=-13.0005%2C-38.6485"
+            title="Mapa da Cerqueira's Pizza em Cururupe, Ilhéus"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-39.0700%2C-14.8400%2C-39.0100%2C-14.7900&layer=mapnik&marker=-14.8150%2C-39.0400"
             className="h-80 w-full md:h-full"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           />
         </div>
 
-        {/* Info */}
         <div className="flex flex-col justify-center">
           <dl className="space-y-6">
             {infos.map((i) => (
@@ -92,7 +87,7 @@ function Contato() {
 
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href="https://wa.me/5571999990000"
+              href="https://wa.me/message/DIYAGYHKRP3KC1"
               target="_blank"
               rel="noreferrer"
               className="rounded-full bg-primary px-6 py-2.5 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105"
@@ -100,10 +95,12 @@ function Contato() {
               WhatsApp
             </a>
             <a
-              href="tel:+557133334444"
+              href="https://www.instagram.com/cerqueiraspizza"
+              target="_blank"
+              rel="noreferrer"
               className="rounded-full border border-gold/50 px-6 py-2.5 text-sm font-semibold uppercase tracking-widest text-cream transition-colors hover:bg-gold hover:text-primary-foreground"
             >
-              Ligar
+              Instagram
             </a>
           </div>
         </div>
