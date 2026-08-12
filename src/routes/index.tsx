@@ -102,7 +102,7 @@ function Index() {
           {[
             { t: "Ingredientes selecionados", d: "Sabor que fica em cada fatia." },
             { t: "Delivery", d: "Peça e receba em casa." },
-            { t: "Ter a Dom · 18h — 22h", d: "Aberto todas as noites, menos segunda." },
+            { t: "Ter a Dom · 18h — 22h", d: "A noite fica ainda mais gostosa." },
           ].map((h) => (
             <div key={h.t} className="text-center sm:text-left">
               <p className="font-display text-lg font-bold text-gold">{h.t}</p>
