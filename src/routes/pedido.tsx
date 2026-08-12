@@ -3,17 +3,16 @@ import { createFileRoute } from "@tanstack/react-router";
 export const Route = createFileRoute("/pedido")({
   head: () => ({
     meta: [
-      { title: "Pedir Online — Forno D'Oro Pizzaria" },
+      { title: "Pedir Online — Cerqueira's Pizza" },
       {
         name: "description",
         content:
-          "Peça sua pizza da Forno D'Oro pelo WhatsApp ou iFood. Entrega em Salvador em até 40 minutos.",
+          "Peça sua pizza da Cerqueira's Pizza pelo WhatsApp. Delivery e retirada em Cururupe, Ilhéus/BA, de terça a domingo das 18h às 22h.",
       },
-      { property: "og:title", content: "Pedir Online — Forno D'Oro Pizzaria" },
+      { property: "og:title", content: "Pedir Online — Cerqueira's Pizza" },
       {
         property: "og:description",
-        content:
-          "Peça sua pizza da Forno D'Oro pelo WhatsApp ou iFood. Entrega em Salvador em até 40 minutos.",
+        content: "Delivery e retirada em Ilhéus/BA. Peça pelo WhatsApp, terça a domingo, 18h às 22h.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -26,36 +25,33 @@ const channels = [
   {
     name: "WhatsApp",
     desc: "Peça direto com a gente. Atendimento humano e cardápio completo.",
-    href: "https://wa.me/5571999990000",
+    href: "https://wa.me/message/DIYAGYHKRP3KC1",
     cta: "Chamar no WhatsApp",
-    note: "Resposta em até 5 minutos",
+    note: "Delivery e retirada",
   },
   {
-    name: "iFood",
-    desc: "Peça pelo app com cupons e pagamento online.",
-    href: "https://www.ifood.com.br",
-    cta: "Abrir no iFood",
-    note: "Pagamento online disponível",
+    name: "Instagram",
+    desc: "Veja as novidades, sabores da semana e chame no direct.",
+    href: "https://www.instagram.com/cerqueiraspizza",
+    cta: "Abrir Instagram",
+    note: "@cerqueiraspizza",
   },
 ];
 
 const steps = [
-  { n: "01", t: "Escolha o canal", d: "WhatsApp ou iFood, como preferir." },
-  { n: "02", t: "Monte seu pedido", d: "Selecione pizzas, entradas e bebidas." },
-  { n: "03", t: "Receba quentinha", d: "Entrega em Salvador em até 40 minutos." },
+  { n: "01", t: "Chame no WhatsApp", d: "Fale com a gente pelo link acima." },
+  { n: "02", t: "Monte seu pedido", d: "Escolha as pizzas e bebidas do cardápio." },
+  { n: "03", t: "Receba ou retire", d: "Delivery na sua casa ou retirada na pizzaria." },
 ];
 
 function Pedido() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
       <header className="text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
-          Pedir online
-        </p>
+        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">Pedir online</p>
         <h1 className="mt-3 font-display text-5xl font-bold text-cream">Sua pizza a caminho</h1>
         <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-          Escolha o canal de entrega mais conveniente para você. Cozinhamos assim que o pedido
-          chega.
+          Atendemos de terça a domingo, das 18h às 22h. Cozinhamos assim que o pedido chega.
         </p>
         <div className="mx-auto mt-6 h-px max-w-xs hairline-gold" />
       </header>
@@ -73,7 +69,7 @@ function Pedido() {
               <h2 className="font-display text-3xl font-bold text-cream">{c.name}</h2>
               <p className="mt-3 text-sm text-muted-foreground">{c.desc}</p>
             </div>
-            <div className="mt-8 flex items-center justify-between">
+            <div className="mt-8 flex flex-wrap items-center justify-between gap-3">
               <span className="text-xs uppercase tracking-widest text-gold">{c.note}</span>
               <span className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform group-hover:scale-105">
                 {c.cta}
@@ -97,14 +93,9 @@ function Pedido() {
       </section>
 
       <div className="mt-16 rounded-2xl border border-gold/30 bg-secondary/40 p-8 text-center sm:p-12">
-        <p className="text-sm text-muted-foreground">Prefere ligar?</p>
-        <a
-          href="tel:+557133334444"
-          className="mt-2 inline-block font-display text-3xl font-bold text-gold transition-colors hover:text-gold-bright"
-        >
-          (71) 3333-4444
-        </a>
-        <p className="mt-4 text-sm text-muted-foreground">Ter a Dom · 18h — 23h30</p>
+        <p className="text-sm text-muted-foreground">Horário de atendimento</p>
+        <p className="mt-2 font-display text-3xl font-bold text-gold">Terça a domingo · 18h — 22h</p>
+        <p className="mt-4 text-sm text-muted-foreground">Cururupe · Ilhéus / BA</p>
       </div>
     </div>
   );

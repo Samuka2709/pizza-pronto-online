@@ -10,6 +10,7 @@ import {
 import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import logo from "../assets/cerqueiras-logo.jpg.asset.json";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -77,18 +78,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Forno D'Oro — Pizzaria Artesanal" },
+      { title: "Cerqueira's Pizza — Pizzaria em Ilhéus/BA" },
       {
         name: "description",
         content:
-          "Pizzaria artesanal com forno a lenha em Salvador. Massa de fermentação natural, ingredientes frescos e entrega rápida.",
+          "Feita com carinho, para reunir quem você ama. Pizzaria em Cururupe, Ilhéus/BA. Delivery e retirada, terça a domingo das 18h às 22h.",
       },
-      { name: "author", content: "Forno D'Oro" },
-      { property: "og:title", content: "Forno D'Oro — Pizzaria Artesanal" },
+      { name: "author", content: "Cerqueira's Pizza" },
+      { property: "og:title", content: "Cerqueira's Pizza — Pizzaria em Ilhéus/BA" },
       {
         property: "og:description",
         content:
-          "Pizzaria artesanal com forno a lenha em Salvador. Massa de fermentação natural, ingredientes frescos e entrega rápida.",
+          "Feita com carinho, para reunir quem você ama. Delivery e retirada em Cururupe, Ilhéus/BA.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -101,7 +102,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap",
       },
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
     ],
   }),
   shellComponent: RootShell,
@@ -127,6 +128,7 @@ function RootShell({ children }: { children: ReactNode }) {
 const navLinks = [
   { to: "/", label: "Início" },
   { to: "/cardapio", label: "Cardápio" },
+  { to: "/historia", label: "Nossa história" },
   { to: "/pedido", label: "Pedir" },
   { to: "/contato", label: "Contato" },
 ] as const;
@@ -136,11 +138,19 @@ function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-        <Link to="/" className="flex items-baseline gap-2" onClick={() => setOpen(false)}>
+        <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
+          <img
+            src={logo.url}
+            alt="Logo da Cerqueira's Pizza"
+            width={40}
+            height={40}
+            className="h-10 w-10 rounded-full"
+          />
           <span className="font-display text-xl font-bold tracking-tight text-cream">
-            Forno <span className="gold-text">D'Oro</span>
+            Cerqueira's <span className="gold-text">Pizza</span>
           </span>
         </Link>
+
 
         <nav className="hidden items-center gap-8 md:flex">
           {navLinks.map((l) => (
@@ -208,11 +218,11 @@ function Footer() {
         <div className="grid gap-8 md:grid-cols-3">
           <div>
             <p className="font-display text-lg font-bold text-cream">
-              Forno <span className="gold-text">D'Oro</span>
+              Cerqueira's <span className="gold-text">Pizza</span>
             </p>
             <p className="mt-2 max-w-xs text-sm text-muted-foreground">
-              Pizzaria artesanal com forno a lenha. Massa de fermentação natural, ingredientes
-              frescos e muito amor em cada pizza.
+              Feita com carinho, para reunir quem você ama. Ingredientes selecionados, sabor que
+              fica.
             </p>
           </div>
           <div>
@@ -230,31 +240,33 @@ function Footer() {
           <div>
             <p className="text-xs font-semibold uppercase tracking-widest text-gold">Contato</p>
             <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-              <li>Rua das Pizzas, 123 — Salvador, BA</li>
-              <li>(71) 3333-4444</li>
-              <li>Ter a Dom · 18h — 23h30</li>
+              <li>Cururupe — Ilhéus / BA</li>
+              <li>Delivery e retirada</li>
+              <li>Ter a Dom · 18h — 22h</li>
               <li>
                 <a
-                  href="https://wa.me/5571999990000"
+                  href="https://wa.me/message/DIYAGYHKRP3KC1"
                   className="transition-colors hover:text-cream"
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   WhatsApp
                 </a>
                 {" · "}
                 <a
-                  href="https://www.ifood.com.br"
+                  href="https://www.instagram.com/cerqueiraspizza"
                   className="transition-colors hover:text-cream"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  iFood
+                  Instagram
                 </a>
               </li>
             </ul>
           </div>
         </div>
         <div className="mt-10 border-t border-border/60 pt-6 text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Forno D'Oro Pizzaria. Todos os direitos reservados.
+          © {new Date().getFullYear()} Cerqueira's Pizza. Todos os direitos reservados.
         </div>
       </div>
     </footer>
