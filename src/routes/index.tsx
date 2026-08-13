@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Clock, Flame, MapPin, Pizza, Truck } from "lucide-react";
-import heroPizza from "../assets/hero-lombinho.jpg";
+import heroPizza from "../assets/hero-lombinho.webp";
 import logo from "../assets/cerqueiras-logo.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -20,6 +20,9 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [
+      { rel: "preload", as: "image", href: heroPizza, fetchpriority: "high" },
     ],
   }),
   component: Index,
@@ -54,7 +57,10 @@ function Index() {
             src={heroPizza}
             alt="Pizza de lombinho com cream cheese e geleia de amora da Cerqueira's Pizza"
             width={1600}
-            height={1008}
+            height={1073}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
