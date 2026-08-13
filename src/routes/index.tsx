@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Clock, Flame, MapPin, Pizza, Truck } from "lucide-react";
 import heroPizza from "../assets/hero-lombinho.jpg";
 import logo from "../assets/cerqueiras-logo.jpg.asset.json";
 
@@ -92,6 +93,55 @@ function Index() {
                 Ver cardápio
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Animated marquee bridge */}
+      <section className="relative overflow-hidden border-y border-border/40 bg-card/30 py-10">
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-background to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-background to-transparent" />
+
+        {/* Row 1 — scrolls left */}
+        <div className="relative flex overflow-hidden">
+          <div className="flex shrink-0 animate-marquee-left items-center gap-8 whitespace-nowrap">
+            {[...Array(2)].map((_, i) => (
+              <div key={i} className="flex items-center gap-8">
+                <span className="font-display text-3xl font-bold text-cream sm:text-5xl">Cerqueira&apos;s Pizza</span>
+                <Pizza className="h-8 w-8 text-gold" />
+                <span className="font-display text-3xl font-bold text-gold sm:text-5xl">Lombinho com Cream Cheese</span>
+                <Flame className="h-8 w-8 text-gold" />
+                <span className="font-display text-3xl font-bold text-cream sm:text-5xl">4 Queijos</span>
+                <Pizza className="h-8 w-8 text-gold" />
+                <span className="font-display text-3xl font-bold text-gold sm:text-5xl">À Moda da Casa</span>
+                <Truck className="h-8 w-8 text-gold" />
+                <span className="font-display text-3xl font-bold text-cream sm:text-5xl">Delivery em Ilhéus</span>
+                <MapPin className="h-8 w-8 text-gold" />
+                <span className="font-display text-3xl font-bold text-gold sm:text-5xl">Cururupe · BA</span>
+                <Clock className="h-8 w-8 text-gold" />
+                <span className="font-display text-3xl font-bold text-cream sm:text-5xl">Ter a Dom · 18h — 22h</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Row 2 — scrolls right */}
+        <div className="relative mt-4 flex overflow-hidden opacity-60">
+          <div className="flex shrink-0 animate-marquee-right items-center gap-8 whitespace-nowrap">
+            {[...Array(2)].map((_, i) => (
+              <div key={i} className="flex items-center gap-8">
+                <span className="font-display text-2xl font-bold text-gold/80 sm:text-4xl">Massa artesanal</span>
+                <span className="font-display text-2xl font-bold text-cream/60 sm:text-4xl">•</span>
+                <span className="font-display text-2xl font-bold text-gold/80 sm:text-4xl">Ingredientes frescos</span>
+                <span className="font-display text-2xl font-bold text-cream/60 sm:text-4xl">•</span>
+                <span className="font-display text-2xl font-bold text-gold/80 sm:text-4xl">Sabor que fica</span>
+                <span className="font-display text-2xl font-bold text-cream/60 sm:text-4xl">•</span>
+                <span className="font-display text-2xl font-bold text-gold/80 sm:text-4xl">Feita com carinho</span>
+                <span className="font-display text-2xl font-bold text-cream/60 sm:text-4xl">•</span>
+                <span className="font-display text-2xl font-bold text-gold/80 sm:text-4xl">Para reunir quem você ama</span>
+                <span className="font-display text-2xl font-bold text-cream/60 sm:text-4xl">•</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>

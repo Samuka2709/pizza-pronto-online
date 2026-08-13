@@ -137,3 +137,22 @@
   width: 100%;
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
+
+@keyframes marquee-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+@utility animate-marquee-left {
+  animation: marquee-left 35s linear infinite;
+}
+
+@utility animate-marquee-right {
+  animation: marquee-right 40s linear infinite;
+}
+
