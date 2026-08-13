@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Clock, Flame, MapPin, Pizza, Truck } from "lucide-react";
 import heroPizza from "../assets/hero-lombinho.jpg";
 import logo from "../assets/cerqueiras-logo.jpg.asset.json";
 
