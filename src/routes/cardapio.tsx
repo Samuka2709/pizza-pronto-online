@@ -183,12 +183,14 @@ function Cardapio() {
         <p className="mx-auto mt-3 max-w-md text-muted-foreground">
           Escolha seu sabor favorito — delivery ou retirada, de terça a domingo, das 18h às 22h.
         </p>
-        <Link
-          to="/pedido"
+        <a
+          href="https://wa.me/5573998548191"
+          target="_blank"
+          rel="noreferrer"
           className="mt-6 inline-flex rounded-full bg-primary px-7 py-3 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105"
         >
           Fazer pedido
-        </Link>
+        </a>
       </div>
     </div>
   );
