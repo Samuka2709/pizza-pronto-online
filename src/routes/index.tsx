@@ -10,13 +10,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Feita com carinho, para reunir quem você ama. Pizzas tradicionais, especiais e doces em Cururupe, Ilhéus/BA. Delivery e retirada, terça a domingo das 18h às 22h.",
+          "Feita com carinho, para reunir quem você ama. Pizzas tradicionais, especiais e doces em Cururupe, Ilhéus/BA. Delivery, terça a domingo das 18h às 22h.",
       },
       { property: "og:title", content: "Cerqueira's Pizza — Pizzaria em Cururupe, Ilhéus/BA" },
       {
         property: "og:description",
         content:
-          "Ingredientes selecionados, sabor que fica. Delivery e retirada em Ilhéus/BA, terça a domingo das 18h às 22h.",
+          "Ingredientes selecionados, sabor que fica. Delivery em Ilhéus/BA, terça a domingo das 18h às 22h.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -86,18 +86,22 @@ function Index() {
               Delivery de terça a domingo, das 18h às 22h.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                to="/pedido"
+              <a
+                href="https://wa.me/5573998548191"
+                target="_blank"
+                rel="noreferrer"
                 className="rounded-full bg-primary px-7 py-3 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105"
               >
                 Pedir agora
-              </Link>
-              <Link
-                to="/cardapio"
+              </a>
+              <a
+                href="https://www.instagram.com/cerqueiraspizza?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                target="_blank"
+                rel="noreferrer"
                 className="rounded-full border border-gold/50 px-7 py-3 text-sm font-semibold uppercase tracking-widest text-cream transition-colors hover:bg-gold hover:text-primary-foreground"
               >
-                Ver cardápio
-              </Link>
+                Ver Instagram
+              </a>
             </div>
           </div>
         </div>
@@ -241,11 +245,11 @@ function Index() {
             Fome de pizza de verdade?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-            Chame no WhatsApp e escolha entre delivery ou retirada em Cururupe, Ilhéus.
+            Chame no WhatsApp e peça delivery em Cururupe, Ilhéus.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <a
-              href="https://wa.me/message/DIYAGYHKRP3KC1"
+              href="https://wa.me/5573998548191"
               target="_blank"
               rel="noreferrer"
               className="rounded-full bg-primary px-7 py-3 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105"
@@ -253,7 +257,7 @@ function Index() {
               Pedir pelo WhatsApp
             </a>
             <a
-              href="https://www.instagram.com/cerqueiraspizza"
+              href="https://www.instagram.com/cerqueiraspizza?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
               target="_blank"
               rel="noreferrer"
               className="rounded-full border border-gold/50 px-7 py-3 text-sm font-semibold uppercase tracking-widest text-cream transition-colors hover:bg-gold hover:text-primary-foreground"
