@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { Pizza } from "lucide-react";
 
 export const Route = createFileRoute("/cardapio")({
   head: () => ({
