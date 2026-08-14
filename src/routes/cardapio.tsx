@@ -35,11 +35,6 @@ const sections: Section[] = [
         desc: "Molho de tomate, mussarela e orégano. O clássico que nunca sai de moda.",
       },
       {
-        name: "4 Queijos",
-        desc: "Molho de tomate, mussarela, catupiry, parmesão e provolone. Cremosa do começo ao fim.",
-        tag: "Novidade",
-      },
-      {
         name: "Calabresa",
         desc: "Molho de tomate, mussarela, calabresa fatiada, cebola e orégano. O sabor tradicional que conquista a cada fatia.",
       },
@@ -74,6 +69,11 @@ const sections: Section[] = [
     note: "8 fatias",
     price: "R$ 69,90",
     items: [
+      {
+        name: "4 Queijos",
+        desc: "Molho de tomate, mussarela, catupiry, parmesão e provolone. Cremosa do começo ao fim.",
+        tag: "Novidade",
+      },
       {
         name: "Lombinho com Cream Cheese e Geleia de Amora",
         desc: "Molho de tomate, mussarela, lombinho defumado, cream cheese, geleia de amora e orégano.",
