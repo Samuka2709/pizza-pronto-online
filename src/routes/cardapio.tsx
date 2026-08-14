@@ -8,12 +8,12 @@ export const Route = createFileRoute("/cardapio")({
       {
         name: "description",
         content:
-          "Cardápio da Cerqueira's Pizza: tradicionais R$ 59,90, especiais R$ 69,90, doces R$ 34,90 e bebidas. Delivery e retirada em Ilhéus/BA.",
+          "Cardápio da Cerqueira's Pizza: tradicionais R$ 59,90, especiais R$ 69,90, doces 8 fatias R$ 64,90, baby 4 fatias R$ 34,90 e bebidas. Delivery em Ilhéus/BA.",
       },
       { property: "og:title", content: "Cardápio — Cerqueira's Pizza" },
       {
         property: "og:description",
-        content: "Pizzas tradicionais, especiais, doces e bebidas. Delivery e retirada em Ilhéus/BA.",
+        content: "Pizzas tradicionais, especiais, doces e bebidas. Delivery em Ilhéus/BA.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
