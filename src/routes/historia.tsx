@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import logo from "../assets/cerqueiras-logo.jpg.asset.json";
 
 export const Route = createFileRoute("/historia")({
