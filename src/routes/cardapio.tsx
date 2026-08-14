@@ -95,6 +95,19 @@ const sections: Section[] = [
   },
   {
     title: "Pizzas Doces",
+    note: "8 fatias",
+    price: "R$ 64,90",
+    items: [
+      { name: "Nutella com Morango", desc: "Creme de leite, mussarela, Nutella e morango." },
+      {
+        name: "Chocolate com Confete",
+        desc: "Creme de leite, mussarela, chocolate e confete colorido.",
+      },
+      { name: "Romeu e Julieta", desc: "Creme de leite, mussarela, goiabada cremosa." },
+    ],
+  },
+  {
+    title: "Pizza Doce Baby",
     note: "4 fatias · escolha até 2 sabores na mesma pizza",
     price: "R$ 34,90",
     items: [
