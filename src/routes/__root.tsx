@@ -82,14 +82,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Feita com carinho, para reunir quem você ama. Pizzaria em Cururupe, Ilhéus/BA. Delivery e retirada, terça a domingo das 18h às 22h.",
+          "Feita com carinho, para reunir quem você ama. Pizzaria em Cururupe, Ilhéus/BA. Delivery, terça a domingo das 18h às 22h.",
       },
       { name: "author", content: "Cerqueira's Pizza" },
       { property: "og:title", content: "Cerqueira's Pizza — Pizzaria em Ilhéus/BA" },
       {
         property: "og:description",
         content:
-          "Feita com carinho, para reunir quem você ama. Delivery e retirada em Cururupe, Ilhéus/BA.",
+          "Feita com carinho, para reunir quem você ama. Delivery em Cururupe, Ilhéus/BA.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -163,12 +163,14 @@ function Header() {
               {l.label}
             </Link>
           ))}
-          <Link
-            to="/pedido"
+          <a
+            href="https://wa.me/5573998548191"
+            target="_blank"
+            rel="noreferrer"
             className="rounded-full bg-primary px-5 py-2 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105"
           >
             Pedir agora
-          </Link>
+          </a>
         </nav>
 
         <button
@@ -241,11 +243,11 @@ function Footer() {
             <p className="text-xs font-semibold uppercase tracking-widest text-gold">Contato</p>
             <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
               <li>Cururupe — Ilhéus / BA</li>
-              <li>Delivery e retirada</li>
+              <li>Delivery</li>
               <li>Ter a Dom · 18h — 22h</li>
               <li>
                 <a
-                  href="https://wa.me/message/DIYAGYHKRP3KC1"
+                  href="https://wa.me/5573998548191"
                   className="transition-colors hover:text-cream"
                   target="_blank"
                   rel="noreferrer"
@@ -254,7 +256,7 @@ function Footer() {
                 </a>
                 {" · "}
                 <a
-                  href="https://www.instagram.com/cerqueiraspizza"
+                  href="https://www.instagram.com/cerqueiraspizza?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                   className="transition-colors hover:text-cream"
                   target="_blank"
                   rel="noreferrer"
