@@ -32,7 +32,7 @@ const featured = [
   {
     name: "4 Queijos",
     desc: "Mussarela, catupiry, parmesão e provolone. Nossa novidade, cremosa do começo ao fim.",
-    price: "R$ 59,90",
+    price: "R$ 69,90",
     tag: "Novidade",
   },
   {
