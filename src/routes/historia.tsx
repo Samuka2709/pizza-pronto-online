@@ -84,12 +84,14 @@ function Historia() {
       <div className="mt-16 text-center">
         <p className="text-muted-foreground">Esse é o significado da</p>
         <p className="mt-2 font-display text-3xl font-bold text-cream">Cerqueira's Pizza.</p>
-        <Link
-          to="/pedido"
+        <a
+          href="https://wa.me/5573998548191"
+          target="_blank"
+          rel="noreferrer"
           className="mt-8 inline-flex rounded-full bg-primary px-7 py-3 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105"
         >
           Fazer pedido
-        </Link>
+        </a>
       </div>
     </div>
   );

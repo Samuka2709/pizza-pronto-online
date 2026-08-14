@@ -25,14 +25,14 @@ const channels = [
   {
     name: "WhatsApp",
     desc: "Peça direto com a gente. Atendimento humano e cardápio completo.",
-    href: "https://wa.me/message/DIYAGYHKRP3KC1",
+    href: "https://wa.me/5573998548191",
     cta: "Chamar no WhatsApp",
-    note: "Delivery e retirada",
+    note: "Delivery",
   },
   {
     name: "Instagram",
     desc: "Veja as novidades, sabores da semana e chame no direct.",
-    href: "https://www.instagram.com/cerqueiraspizza",
+    href: "https://www.instagram.com/cerqueiraspizza?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
     cta: "Abrir Instagram",
     note: "@cerqueiraspizza",
   },
