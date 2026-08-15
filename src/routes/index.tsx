@@ -23,6 +23,43 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "preload", as: "image", href: heroPizza, fetchpriority: "high" },
+      { rel: "canonical", href: "/" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Restaurant",
+          name: "Cerqueira's Pizza",
+          servesCuisine: "Pizza",
+          priceRange: "R$ 34,90 - R$ 69,90",
+          telephone: "+55 73 99854-8191",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Ilhéus",
+            addressRegion: "BA",
+            addressCountry: "BR",
+            streetAddress: "Cururupe",
+          },
+          sameAs: ["https://www.instagram.com/cerqueiraspizza"],
+          openingHoursSpecification: [
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: [
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday",
+              ],
+              opens: "18:00",
+              closes: "22:00",
+            },
+          ],
+        }),
+      },
     ],
   }),
   component: Index,
