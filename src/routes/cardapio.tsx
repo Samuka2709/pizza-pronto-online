@@ -29,7 +29,7 @@ type Section = { title: string; note: string; price: string; items: Item[] };
 const sections: Section[] = [
   {
     title: "Pizzas Tradicionais",
-    note: "8 fatias",
+    note: "8 fatias · escolha até 2 sabores na mesma pizza",
     price: "R$ 59,90",
     items: [
       {
@@ -68,7 +68,7 @@ const sections: Section[] = [
   },
   {
     title: "Pizzas Especiais",
-    note: "8 fatias",
+    note: "8 fatias · escolha até 2 sabores na mesma pizza",
     price: "R$ 69,90",
     items: [
       {
@@ -96,7 +96,7 @@ const sections: Section[] = [
   },
   {
     title: "Pizzas Doces",
-    note: "8 fatias",
+    note: "8 fatias · escolha até 2 sabores na mesma pizza",
     price: "R$ 64,90",
     items: [
       { name: "Nutella com Morango", desc: "Creme de leite, mussarela, Nutella e morango." },
