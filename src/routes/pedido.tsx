@@ -62,7 +62,7 @@ function Pedido() {
             key={c.name}
             href={c.href}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="group flex flex-col justify-between rounded-2xl border border-border/60 bg-card p-8 transition-colors hover:border-gold/60"
           >
             <div>

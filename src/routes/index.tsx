@@ -89,7 +89,7 @@ function Index() {
               <a
                 href="https://wa.me/5573998548191"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="rounded-full bg-primary px-7 py-3 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105"
               >
                 Pedir agora
@@ -97,7 +97,7 @@ function Index() {
               <a
                 href="https://www.instagram.com/cerqueiraspizza?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="rounded-full border border-gold/50 px-7 py-3 text-sm font-semibold uppercase tracking-widest text-cream transition-colors hover:bg-gold hover:text-primary-foreground"
               >
                 Ver Instagram
@@ -251,7 +251,7 @@ function Index() {
             <a
               href="https://wa.me/5573998548191"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="rounded-full bg-primary px-7 py-3 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105"
             >
               Pedir pelo WhatsApp
@@ -259,7 +259,7 @@ function Index() {
             <a
               href="https://www.instagram.com/cerqueiraspizza?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="rounded-full border border-gold/50 px-7 py-3 text-sm font-semibold uppercase tracking-widest text-cream transition-colors hover:bg-gold hover:text-primary-foreground"
             >
               Ver no Instagram

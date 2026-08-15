@@ -156,3 +156,16 @@
   animation: marquee-right 40s linear infinite;
 }
 
+
+/* Respeita usuários que preferem menos movimento (acessibilidade). */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-left,
+  .animate-marquee-right {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
