@@ -7,16 +7,17 @@ export const Route = createFileRoute("/pedido")({
       {
         name: "description",
         content:
-          "Peça sua pizza da Cerqueira's Pizza pelo WhatsApp. Delivery e retirada em Cururupe, Ilhéus/BA, de terça a domingo das 18h às 22h.",
+          "Peça sua pizza da Cerqueira's Pizza pelo WhatsApp. Delivery em Cururupe, Ilhéus/BA, de terça a domingo das 18h às 22h.",
       },
       { property: "og:title", content: "Pedir Online — Cerqueira's Pizza" },
       {
         property: "og:description",
-        content: "Delivery e retirada em Ilhéus/BA. Peça pelo WhatsApp, terça a domingo, 18h às 22h.",
+        content: "Delivery em Ilhéus/BA. Peça pelo WhatsApp, terça a domingo, 18h às 22h.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "/pedido" }],
   }),
   component: Pedido,
 });
@@ -41,7 +42,7 @@ const channels = [
 const steps = [
   { n: "01", t: "Chame no WhatsApp", d: "Fale com a gente pelo link acima." },
   { n: "02", t: "Monte seu pedido", d: "Escolha as pizzas e bebidas do cardápio." },
-  { n: "03", t: "Receba ou retire", d: "Delivery na sua casa ou retirada na pizzaria." },
+  { n: "03", t: "Receba em casa", d: "Entregamos quentinha, direto na sua porta." },
 ];
 
 function Pedido() {
@@ -62,7 +63,7 @@ function Pedido() {
             key={c.name}
             href={c.href}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="group flex flex-col justify-between rounded-2xl border border-border/60 bg-card p-8 transition-colors hover:border-gold/60"
           >
             <div>

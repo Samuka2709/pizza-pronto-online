@@ -19,6 +19,7 @@ export const Route = createFileRoute("/historia")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "/historia" }],
   }),
   component: Historia,
 });
@@ -87,7 +88,7 @@ function Historia() {
         <a
           href="https://wa.me/5573998548191"
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
           className="mt-8 inline-flex rounded-full bg-primary px-7 py-3 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105"
         >
           Fazer pedido

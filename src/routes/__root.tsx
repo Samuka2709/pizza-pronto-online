@@ -15,7 +15,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-dvh items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
         <h2 className="mt-4 text-xl font-semibold text-foreground">Página não encontrada</h2>
@@ -36,14 +36,14 @@ function NotFoundComponent() {
 }
 
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
-  console.error(error);
+  if (import.meta.env.DEV) console.error(error);
   const router = useRouter();
   useEffect(() => {
     reportLovableError(error, { boundary: "tanstack_root_error_component" });
   }, [error]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-dvh items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
           Esta página não carregou
@@ -166,7 +166,7 @@ function Header() {
           <a
             href="https://wa.me/5573998548191"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="rounded-full bg-primary px-5 py-2 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105"
           >
             Pedir agora
@@ -250,7 +250,7 @@ function Footer() {
                   href="https://wa.me/5573998548191"
                   className="transition-colors hover:text-cream"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
                   WhatsApp
                 </a>
@@ -259,7 +259,7 @@ function Footer() {
                   href="https://www.instagram.com/cerqueiraspizza?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                   className="transition-colors hover:text-cream"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
                   Instagram
                 </a>
@@ -280,7 +280,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex min-h-screen flex-col">
+      <div className="flex min-h-dvh flex-col">
         <Header />
         <main className="flex-1">
           <Outlet />

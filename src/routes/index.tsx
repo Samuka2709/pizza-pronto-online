@@ -23,6 +23,43 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "preload", as: "image", href: heroPizza, fetchpriority: "high" },
+      { rel: "canonical", href: "/" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Restaurant",
+          name: "Cerqueira's Pizza",
+          servesCuisine: "Pizza",
+          priceRange: "R$ 34,90 - R$ 69,90",
+          telephone: "+55 73 99854-8191",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Ilhéus",
+            addressRegion: "BA",
+            addressCountry: "BR",
+            streetAddress: "Cururupe",
+          },
+          sameAs: ["https://www.instagram.com/cerqueiraspizza"],
+          openingHoursSpecification: [
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: [
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday",
+              ],
+              opens: "18:00",
+              closes: "22:00",
+            },
+          ],
+        }),
+      },
     ],
   }),
   component: Index,
@@ -89,7 +126,7 @@ function Index() {
               <a
                 href="https://wa.me/5573998548191"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="rounded-full bg-primary px-7 py-3 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105"
               >
                 Pedir agora
@@ -97,7 +134,7 @@ function Index() {
               <a
                 href="https://www.instagram.com/cerqueiraspizza?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="rounded-full border border-gold/50 px-7 py-3 text-sm font-semibold uppercase tracking-widest text-cream transition-colors hover:bg-gold hover:text-primary-foreground"
               >
                 Ver Instagram
@@ -251,7 +288,7 @@ function Index() {
             <a
               href="https://wa.me/5573998548191"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="rounded-full bg-primary px-7 py-3 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105"
             >
               Pedir pelo WhatsApp
@@ -259,7 +296,7 @@ function Index() {
             <a
               href="https://www.instagram.com/cerqueiraspizza?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="rounded-full border border-gold/50 px-7 py-3 text-sm font-semibold uppercase tracking-widest text-cream transition-colors hover:bg-gold hover:text-primary-foreground"
             >
               Ver no Instagram

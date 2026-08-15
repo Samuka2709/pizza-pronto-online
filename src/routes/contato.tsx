@@ -12,20 +12,21 @@ export const Route = createFileRoute("/contato")({
       { property: "og:title", content: "Localização & Contato — Cerqueira's Pizza" },
       {
         property: "og:description",
-        content: "Cururupe, Ilhéus/BA. Terça a domingo, 18h às 22h. Delivery e retirada.",
+        content: "Cururupe, Ilhéus/BA. Terça a domingo, 18h às 22h. Delivery.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "/contato" }],
   }),
   component: Contato,
 });
 
 const infos = [
   { label: "Bairro", value: "Cururupe — Ilhéus / BA" },
-  { label: "WhatsApp", value: "wa.me/message/DIYAGYHKRP3KC1" },
+  { label: "WhatsApp", value: "(73) 99854-8191" },
   { label: "Instagram", value: "@cerqueiraspizza" },
-  { label: "Atendimento", value: "Delivery e retirada" },
+  { label: "Atendimento", value: "Delivery" },
 ];
 
 const hours = [
@@ -40,9 +41,11 @@ function Contato() {
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
           Localização & contato
         </p>
-        <h1 className="mt-3 font-display text-5xl font-bold text-cream">Venha nos visitar</h1>
+        <h1 className="mt-3 font-display text-4xl font-bold text-cream sm:text-5xl">
+          Fale com a gente
+        </h1>
         <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-          Estamos em Cururupe, Ilhéus/BA. Retire na pizzaria ou peça delivery.
+          Estamos em Cururupe, Ilhéus/BA. Peça seu delivery pelo WhatsApp.
         </p>
         <div className="mx-auto mt-6 h-px max-w-xs hairline-gold" />
       </header>
@@ -89,7 +92,7 @@ function Contato() {
             <a
               href="https://wa.me/5573998548191"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="rounded-full bg-primary px-6 py-2.5 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105"
             >
               WhatsApp
@@ -97,7 +100,7 @@ function Contato() {
             <a
               href="https://www.instagram.com/cerqueiraspizza?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="rounded-full border border-gold/50 px-6 py-2.5 text-sm font-semibold uppercase tracking-widest text-cream transition-colors hover:bg-gold hover:text-primary-foreground"
             >
               Instagram
