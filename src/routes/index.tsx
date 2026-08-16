@@ -144,8 +144,9 @@ function Index() {
         </div>
       </section>
 
-      {/* Animated marquee bridge */}
-      <section className="relative overflow-hidden border-y border-gold/30 bg-secondary/50 py-10">
+      {/* Animated marquee bridge — decorativo */}
+      <section aria-hidden="true" className="relative overflow-hidden border-y border-gold/30 bg-secondary/50 py-10">
+
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-background to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-background to-transparent" />
 
