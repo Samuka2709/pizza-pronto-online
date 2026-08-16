@@ -294,12 +294,19 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-dvh flex-col">
+        <a
+          href="#conteudo"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground"
+        >
+          Ir para o conteúdo
+        </a>
         <Header />
-        <main className="flex-1">
+        <main id="conteudo" className="flex-1">
           <Outlet />
         </main>
         <Footer />
       </div>
+
     </QueryClientProvider>
   );
 }
