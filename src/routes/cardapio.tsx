@@ -89,6 +89,11 @@ const sections: Section[] = [
         desc: "Molho de tomate, mussarela, frango desfiado, bacon crocante e orégano.",
       },
       {
+        name: "Atum",
+        desc: "Molho de tomate, mussarela, atum em pedaços, cebola, azeitonas e orégano. Leve, saborosa e irresistível.",
+        tag: "Novidade",
+      },
+      {
         name: "À Moda da Casa",
         desc: "Molho de tomate, mussarela, calabresa, bacon, catupiry e orégano. A receita especial da casa.",
       },
