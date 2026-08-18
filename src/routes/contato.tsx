@@ -46,7 +46,7 @@ function Contato() {
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
           Localização & contato
         </p>
-        <h1 className="mt-3 font-display text-4xl font-bold text-cream sm:text-5xl">
+        <h1 className="mt-3 font-display text-3xl font-bold text-cream sm:text-4xl md:text-5xl">
           Fale com a gente
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
@@ -63,6 +63,7 @@ function Contato() {
             className="h-80 w-full md:h-full"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
+            sandbox="allow-scripts allow-same-origin"
           />
         </div>
 

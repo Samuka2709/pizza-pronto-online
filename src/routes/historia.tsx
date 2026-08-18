@@ -66,7 +66,7 @@ function Historia() {
         <p className="mt-6 text-xs font-semibold uppercase tracking-[0.3em] text-gold">
           Nossa história
         </p>
-        <h1 className="mt-3 font-display text-5xl font-bold text-cream">
+        <h1 className="mt-3 font-display text-3xl font-bold text-cream sm:text-4xl md:text-5xl">
           Por que Cerqueira's Pizza?
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
