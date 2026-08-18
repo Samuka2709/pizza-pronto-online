@@ -1,5 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+const siteUrl = "https://id-preview--b406a94a-6eb1-4481-9555-018367b54ca6.lovable.app";
+const ogImage = `${siteUrl}/__l5e/assets-v1/d1de99d4-6499-4129-8c12-81265228e38e/cerqueiras-logo.jpg`;
+
 export const Route = createFileRoute("/pedido")({
   head: () => ({
     meta: [
@@ -15,7 +18,9 @@ export const Route = createFileRoute("/pedido")({
         content: "Delivery em Ilhéus/BA. Peça pelo WhatsApp, terça a domingo, 18h às 22h.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: ogImage },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: ogImage },
     ],
     links: [{ rel: "canonical", href: "/pedido" }],
   }),
@@ -50,7 +55,7 @@ function Pedido() {
     <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
       <header className="text-center">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">Pedir online</p>
-        <h1 className="mt-3 font-display text-5xl font-bold text-cream">Sua pizza a caminho</h1>
+        <h1 className="mt-3 font-display text-4xl font-bold text-cream sm:text-5xl">Sua pizza a caminho</h1>
         <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
           Atendemos de terça a domingo, das 18h às 22h. Cozinhamos assim que o pedido chega.
         </p>
@@ -67,7 +72,7 @@ function Pedido() {
             className="group flex flex-col justify-between rounded-2xl border border-border/60 bg-card p-8 transition-colors hover:border-gold/60"
           >
             <div>
-              <h2 className="font-display text-3xl font-bold text-cream">{c.name}</h2>
+              <h2 className="font-display text-2xl font-bold text-cream sm:text-3xl">{c.name}</h2>
               <p className="mt-3 text-sm text-muted-foreground">{c.desc}</p>
             </div>
             <div className="mt-8 flex flex-wrap items-center justify-between gap-3">

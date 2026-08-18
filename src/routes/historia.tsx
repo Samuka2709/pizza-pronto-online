@@ -1,6 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import logo from "../assets/cerqueiras-logo.jpg.asset.json";
 
+const siteUrl = "https://id-preview--b406a94a-6eb1-4481-9555-018367b54ca6.lovable.app";
+const ogImage = `${siteUrl}/__l5e/assets-v1/d1de99d4-6499-4129-8c12-81265228e38e/cerqueiras-logo.jpg`;
+
 export const Route = createFileRoute("/historia")({
   head: () => ({
     meta: [
@@ -17,7 +20,9 @@ export const Route = createFileRoute("/historia")({
           "Mais do que um sobrenome, uma história: pizzas feitas com carinho para reunir quem você ama.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: ogImage },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: ogImage },
     ],
     links: [{ rel: "canonical", href: "/historia" }],
   }),
@@ -61,7 +66,7 @@ function Historia() {
         <p className="mt-6 text-xs font-semibold uppercase tracking-[0.3em] text-gold">
           Nossa história
         </p>
-        <h1 className="mt-3 font-display text-5xl font-bold text-cream">
+        <h1 className="mt-3 font-display text-3xl font-bold text-cream sm:text-4xl md:text-5xl">
           Por que Cerqueira's Pizza?
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-muted-foreground">

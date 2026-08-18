@@ -1,6 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Pizza } from "lucide-react";
 
+const siteUrl = "https://id-preview--b406a94a-6eb1-4481-9555-018367b54ca6.lovable.app";
+const ogImage = `${siteUrl}/__l5e/assets-v1/d1de99d4-6499-4129-8c12-81265228e38e/cerqueiras-logo.jpg`;
+
 export const Route = createFileRoute("/cardapio")({
   head: () => ({
     meta: [
@@ -16,7 +19,9 @@ export const Route = createFileRoute("/cardapio")({
         content: "Pizzas tradicionais, especiais, doces e bebidas. Delivery em Ilhéus/BA.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: ogImage },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: ogImage },
     ],
     links: [{ rel: "canonical", href: "/cardapio" }],
   }),
@@ -171,7 +176,7 @@ function Cardapio() {
       <div className="mx-auto max-w-6xl">
         <header className="text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">Nosso cardápio</p>
-          <h1 className="mt-3 font-display text-5xl font-bold text-cream">
+          <h1 className="mt-3 font-display text-4xl font-bold text-cream sm:text-5xl">
             Feita com carinho
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
@@ -185,7 +190,7 @@ function Cardapio() {
             <section key={s.title}>
               <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-gold/30 pb-3">
                 <div>
-                  <h2 className="font-display text-3xl font-bold text-gold">{s.title}</h2>
+                  <h2 className="font-display text-2xl font-bold text-gold sm:text-3xl">{s.title}</h2>
                   <p className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">
                     {s.note}
                   </p>
@@ -211,7 +216,7 @@ function Cardapio() {
           ))}
 
           <section>
-            <h2 className="border-b border-gold/30 pb-3 font-display text-3xl font-bold text-gold">
+            <h2 className="border-b border-gold/30 pb-3 font-display text-2xl font-bold text-gold sm:text-3xl">
               Bebidas
             </h2>
             <div className="mt-6 grid gap-x-10 gap-y-3 md:grid-cols-2">

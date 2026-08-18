@@ -1,5 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+const siteUrl = "https://id-preview--b406a94a-6eb1-4481-9555-018367b54ca6.lovable.app";
+const ogImage = `${siteUrl}/__l5e/assets-v1/d1de99d4-6499-4129-8c12-81265228e38e/cerqueiras-logo.jpg`;
+
 export const Route = createFileRoute("/contato")({
   head: () => ({
     meta: [
@@ -15,7 +18,9 @@ export const Route = createFileRoute("/contato")({
         content: "Cururupe, Ilhéus/BA. Terça a domingo, 18h às 22h. Delivery.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: ogImage },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: ogImage },
     ],
     links: [{ rel: "canonical", href: "/contato" }],
   }),
@@ -41,7 +46,7 @@ function Contato() {
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
           Localização & contato
         </p>
-        <h1 className="mt-3 font-display text-4xl font-bold text-cream sm:text-5xl">
+        <h1 className="mt-3 font-display text-3xl font-bold text-cream sm:text-4xl md:text-5xl">
           Fale com a gente
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
@@ -58,6 +63,7 @@ function Contato() {
             className="h-80 w-full md:h-full"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
+            sandbox="allow-scripts allow-same-origin"
           />
         </div>
 
