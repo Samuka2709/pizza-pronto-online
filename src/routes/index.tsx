@@ -122,7 +122,7 @@ function Index() {
             <p className="mt-6 text-xs font-semibold uppercase tracking-[0.3em] text-gold">
               Cururupe · Ilhéus / BA
             </p>
-            <h1 className="mt-4 font-display text-5xl font-bold leading-tight text-cream sm:text-7xl">
+            <h1 className="mt-4 font-display text-4xl font-bold leading-tight text-cream sm:text-5xl md:text-7xl">
               Feita com carinho, para reunir quem você ama.
             </h1>
             <p className="mt-6 max-w-xl text-lg text-cream/80">
