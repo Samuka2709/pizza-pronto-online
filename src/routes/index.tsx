@@ -3,6 +3,9 @@ import { Clock, Flame, MapPin, Pizza, Truck } from "lucide-react";
 import heroPizza from "../assets/hero-lombinho.webp";
 import logo from "../assets/cerqueiras-logo.jpg.asset.json";
 
+const siteUrl = "https://id-preview--b406a94a-6eb1-4481-9555-018367b54ca6.lovable.app";
+const ogImage = `${siteUrl}/__l5e/assets-v1/d1de99d4-6499-4129-8c12-81265228e38e/cerqueiras-logo.jpg`;
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -19,7 +22,9 @@ export const Route = createFileRoute("/")({
           "Ingredientes selecionados, sabor que fica. Delivery em Ilhéus/BA, terça a domingo das 18h às 22h.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: ogImage },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: ogImage },
     ],
     links: [
       { rel: "preload", as: "image", href: heroPizza, fetchpriority: "high" },
@@ -32,9 +37,11 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "Restaurant",
           name: "Cerqueira's Pizza",
+          image: ogImage,
           servesCuisine: "Pizza",
           priceRange: "R$ 34,90 - R$ 69,90",
           telephone: "+55 73 99854-8191",
+          url: siteUrl,
           address: {
             "@type": "PostalAddress",
             addressLocality: "Ilhéus",
