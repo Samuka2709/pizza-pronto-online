@@ -114,14 +114,32 @@
     border-color: var(--color-border);
   }
 
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5 {
     font-family: var(--font-display);
+  }
+
+  /* Melhora a responsividade de toque em telas pequenas (mobile). */
+  a, button, [role="button"], input, textarea, select, summary, label[for] {
+    touch-action: manipulation;
+  }
+
+  /* Garante áreas de toque mínimas no mobile. */
+  a, button, [role="button"] {
+    min-height: 2.5rem;
+    min-width: 2.5rem;
   }
 }
 
