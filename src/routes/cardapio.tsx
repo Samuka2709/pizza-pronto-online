@@ -1,6 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Pizza } from "lucide-react";
 
+const siteUrl = "https://id-preview--b406a94a-6eb1-4481-9555-018367b54ca6.lovable.app";
+const ogImage = `${siteUrl}/__l5e/assets-v1/d1de99d4-6499-4129-8c12-81265228e38e/cerqueiras-logo.jpg`;
+
 export const Route = createFileRoute("/cardapio")({
   head: () => ({
     meta: [
@@ -16,7 +19,9 @@ export const Route = createFileRoute("/cardapio")({
         content: "Pizzas tradicionais, especiais, doces e bebidas. Delivery em Ilhéus/BA.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: ogImage },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: ogImage },
     ],
     links: [{ rel: "canonical", href: "/cardapio" }],
   }),
