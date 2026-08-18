@@ -6,36 +6,12 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-const siteUrl = "https://id-preview--b406a94a-6eb1-4481-9555-018367b54ca6.lovable.app";
-
 export default defineConfig({
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
   },
-  nitro: {
-    routeRules: {
-      "/**": {
-        headers: {
-          "X-Content-Type-Options": "nosniff",
-          "X-Frame-Options": "DENY",
-          "Referrer-Policy": "strict-origin-when-cross-origin",
-          "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=()",
-          "Content-Security-Policy":
-            "default-src 'self'; " +
-            "script-src 'self' 'unsafe-inline' 'unsafe-eval'; " +
-            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
-            "font-src 'self' https://fonts.gstatic.com; " +
-            "img-src 'self' data: https://www.openstreetmap.org; " +
-            "connect-src 'self'; " +
-            "frame-src https://www.openstreetmap.org; " +
-            "object-src 'none'; " +
-            "base-uri 'self'; " +
-            "form-action 'self';",
-        },
-      },
-    },
-  },
 });
+
 
