@@ -113,7 +113,7 @@ function Index() {
         <div className="relative mx-auto max-w-6xl px-4 py-28 sm:px-6 sm:py-40">
           <div className="max-w-2xl">
             <img
-              src={logo.url}
+              src="/cerqueiras-logo.jpg"
               alt="Logo da Cerqueira's Pizza"
               width={96}
               height={96}
