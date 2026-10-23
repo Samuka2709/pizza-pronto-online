@@ -11,7 +11,6 @@ import {
 import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import logo from "../assets/cerqueiras-logo.jpg.asset.json";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -143,7 +142,7 @@ function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
         <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
           <img
-            src={logo.url}
+            src="/cerqueiras-logo.jpg"
             alt="Logo da Cerqueira's Pizza"
             width={40}
             height={40}
