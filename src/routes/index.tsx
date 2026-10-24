@@ -130,22 +130,18 @@ function Index() {
               Delivery de terça a domingo, das 18h às 22h.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <a
-                href="https://wa.me/5573998548191"
-                target="_blank"
-                rel="noopener noreferrer"
+                          <Link
+                to="/pedido"
                 className="rounded-full bg-primary px-7 py-3 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105"
               >
-                Pedir agora
-              </a>
-              <a
-                href="https://www.instagram.com/cerqueiraspizza?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                target="_blank"
-                rel="noopener noreferrer"
+                Monte seu pedido
+              </Link>
+              <Link
+                to="/cardapio"
                 className="rounded-full border border-gold/50 px-7 py-3 text-sm font-semibold uppercase tracking-widest text-cream transition-colors hover:bg-gold hover:text-primary-foreground"
               >
-                Ver Instagram
-              </a>
+                Ver cardápio
+              </Link>
             </div>
           </div>
         </div>
