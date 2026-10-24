@@ -1,31 +1,22 @@
 import { useMemo, useState } from "react";
-import { Minus, Plus, Trash2 } from "lucide-react";
+import { Minus, Plus, Trash2, X } from "lucide-react";
 import { sections, drinks, toNumber, formatBRL } from "@/lib/menu";
 
 const WHATSAPP_NUMBER = "5573998548191";
 
-// Salgadas juntam Tradicionais + Especiais: o cliente pode misturar,
-// e o valor da pizza é o do sabor mais caro (a especial).
-const groups = [
-  {
-    key: "salgada",
-    title: "Pizza",
-    label: "Pizza",
-    slices: "8 fatias",
-    hint: "Misture à vontade: tradicional, especial ou doce. Vale o valor do sabor mais caro.",
-    from: toNumber(sections[0].price),
-    sections: [sections[0], sections[1], sections[2]],
-  },
-  {
-    key: "baby",
-    title: "Doce Baby",
-    label: "Pizza Doce Baby",
-    slices: "4 fatias",
-    hint: "Escolha até 2 sabores na mesma pizza.",
-    from: toNumber(sections[3].price),
-    sections: [sections[3]],
-  },
-] as const;
+// Abas do cardápio: Tradicionais, Especiais, Doces e Doce Baby.
+// Sabor 1 e Sabor 2 podem vir de abas diferentes (o valor é o do sabor mais caro).
+// A Doce Baby tem 4 fatias, então só mistura com ela mesma.
+const categories = sections.map((s, i) => ({
+  idx: i,
+  title: s.title.replace("Pizzas ", "").replace("Pizza ", ""),
+  price: toNumber(s.price),
+  priceLabel: s.price,
+  baby: s.title.includes("Baby"),
+  items: s.items,
+}));
+
+type Choice = { name: string; cat: number } | null;
 
 type PizzaLine = {
   id: number;
@@ -41,7 +32,8 @@ const payments = ["Pix", "Cartão (na entrega)", "Dinheiro"] as const;
 const field =
   "w-full rounded-xl border border-gold/50 bg-secondary px-4 py-3 text-base text-cream placeholder:text-muted-foreground focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40";
 
-const card = "rounded-2xl border border-gold/40 bg-card p-5 shadow-[0_0_0_1px_rgba(201,168,76,0.08)] sm:p-8";
+const card =
+  "rounded-2xl border border-gold/40 bg-card p-5 shadow-[0_0_0_1px_rgba(201,168,76,0.08)] sm:p-8";
 
 function StepTitle({ n, children }: { n: number; children: string }) {
   return (
@@ -88,11 +80,13 @@ function Stepper({
 
 export function OrderBuilder() {
   // Pizza em construção
-  const [groupIdx, setGroupIdx] = useState(0);
-  const [flavor1, setFlavor1] = useState("");
-  const [flavor2, setFlavor2] = useState("");
+  const [catIdx, setCatIdx] = useState(0);
+  const [slot1, setSlot1] = useState<Choice>(null);
+  const [slot2, setSlot2] = useState<Choice>(null);
+  const [activeSlot, setActiveSlot] = useState<1 | 2>(1);
   const [pizzaQty, setPizzaQty] = useState(1);
   const [added, setAdded] = useState(false);
+  const [notice, setNotice] = useState("");
 
   // Pedido
   const [lines, setLines] = useState<PizzaLine[]>([]);
@@ -107,44 +101,70 @@ export function OrderBuilder() {
   const [notes, setNotes] = useState("");
   const [touched, setTouched] = useState(false);
 
-  const group = groups[groupIdx];
+  const cat = categories[catIdx];
+  const picks = [slot1, slot2].filter((p): p is NonNullable<Choice> => p !== null);
+  const isBaby = picks.length > 0 ? categories[picks[0].cat].baby : cat.baby;
+  const currentPrice =
+    picks.length > 0 ? Math.max(...picks.map((p) => categories[p.cat].price)) : cat.price;
 
-  // Todos os sabores do grupo, com o preço da categoria de cada um
-  const options = useMemo(
-    () =>
-      group.sections.map((s) => ({
-        title: s.title,
-        price: toNumber(s.price),
-        items: s.items,
-      })),
-    [group],
-  );
-
-  const priceOf = (flavor: string) => {
-    for (const o of options) {
-      if (o.items.some((it) => it.name === flavor)) return o.price;
-    }
-    return 0;
-  };
-
-  const currentFlavors = flavor2 && flavor2 !== flavor1 ? [flavor1, flavor2] : [flavor1];
-  const currentPrice = flavor1 ? Math.max(...currentFlavors.map(priceOf)) : group.from;
+  const isPicked = (slot: Choice, flavorName: string) =>
+    slot !== null && slot.name === flavorName && slot.cat === catIdx;
 
   const resetBuilder = () => {
-    setFlavor1("");
-    setFlavor2("");
+    setSlot1(null);
+    setSlot2(null);
+    setActiveSlot(1);
     setPizzaQty(1);
   };
 
+  const selectCat = (i: number) => {
+    // Doce Baby (4 fatias) não mistura com as de 8 fatias
+    if (picks.length > 0 && categories[picks[0].cat].baby !== categories[i].baby) {
+      setSlot1(null);
+      setSlot2(null);
+      setActiveSlot(1);
+      setNotice(
+        categories[i].baby
+          ? "A Doce Baby tem 4 fatias e não mistura com as outras. Escolha os sabores dela."
+          : "Voltamos para as pizzas de 8 fatias. Escolha os sabores de novo.",
+      );
+    } else {
+      setNotice("");
+    }
+    setCatIdx(i);
+    setAdded(false);
+  };
+
+  const pickFlavor = (flavorName: string) => {
+    const other = activeSlot === 1 ? slot2 : slot1;
+    const current = activeSlot === 1 ? slot1 : slot2;
+    if (isPicked(other, flavorName)) return; // já é a outra metade
+    const next: Choice = isPicked(current, flavorName) ? null : { name: flavorName, cat: catIdx };
+    if (activeSlot === 1) setSlot1(next);
+    else setSlot2(next);
+    setAdded(false);
+    setNotice("");
+  };
+
+  const clearSlot = (n: 1 | 2) => {
+    if (n === 1) setSlot1(null);
+    else setSlot2(null);
+    setActiveSlot(n);
+    setAdded(false);
+  };
+
+  const flavorText = (flavors: string[]) =>
+    flavors.length === 2 ? `Meia ${flavors[0]} / Meia ${flavors[1]}` : flavors[0];
+
   const addPizza = () => {
-    if (!flavor1) return;
+    if (picks.length === 0) return;
     setLines((prev) => [
       ...prev,
       {
         id: nextId,
-        label: group.label,
-        slices: group.slices,
-        flavors: currentFlavors,
+        label: isBaby ? "Pizza Doce Baby" : "Pizza",
+        slices: isBaby ? "4 fatias" : "8 fatias",
+        flavors: picks.map((p) => p.name),
         qty: pizzaQty,
         unitPrice: currentPrice,
       },
@@ -152,6 +172,7 @@ export function OrderBuilder() {
     setNextId((n) => n + 1);
     resetBuilder();
     setAdded(true);
+    setNotice("");
   };
 
   const drinkLines = useMemo(
@@ -171,9 +192,6 @@ export function OrderBuilder() {
 
   const isEmpty = lines.length === 0 && drinkLines.length === 0;
   const missingData = !name.trim() || !address.trim();
-
-  const flavorText = (flavors: string[]) =>
-    flavors.length === 2 ? `Meia ${flavors[0]} / Meia ${flavors[1]}` : flavors[0];
 
   const buildMessage = () => {
     const parts: string[] = [];
@@ -215,99 +233,126 @@ export function OrderBuilder() {
         <section className={card}>
           <StepTitle n={1}>Escolha sua pizza</StepTitle>
 
-          <div className="mt-5 grid grid-cols-2 gap-2">
-            {groups.map((g, i) => (
+          {/* Abas: Tradicionais, Especiais, Doces, Doce Baby */}
+          <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-4">
+            {categories.map((c, i) => (
               <button
-                key={g.key}
+                key={c.title}
                 type="button"
-                onClick={() => {
-                  setGroupIdx(i);
-                  resetBuilder();
-                  setAdded(false);
-                }}
-                className={`rounded-xl border-2 px-2 py-3 text-center transition-colors ${
-                  i === groupIdx
-                    ? "border-gold bg-gold text-primary-foreground"
-                    : "border-gold/40 bg-secondary text-cream hover:border-gold"
+                onClick={() => selectCat(i)}
+                className={`rounded-xl border px-3 py-3 text-left transition-colors ${
+                  i === catIdx
+                    ? "border-gold bg-gold/15 ring-1 ring-gold"
+                    : "border-gold/30 bg-secondary hover:border-gold/70"
                 }`}
               >
-                <span className="block text-sm font-bold">{g.title}</span>
-                <span
-                  className={`mt-1 block text-xs ${i === groupIdx ? "text-primary-foreground/80" : "text-gold"}`}
-                >
-                  {g.key === "salgada" ? "a partir de " : ""}
-                  {formatBRL(g.from)}
+                <span className="block text-sm font-bold text-cream">{c.title}</span>
+                <span className="mt-1 block text-xs font-semibold text-gold">{c.priceLabel}</span>
+                <span className="block text-[10px] uppercase tracking-widest text-muted-foreground">
+                  {c.baby ? "4 fatias" : "8 fatias"}
                 </span>
               </button>
             ))}
           </div>
 
-          <p className="mt-4 text-xs uppercase tracking-widest text-gold/90">
-            {group.slices} · até 2 sabores
+          <p className="mt-4 text-sm text-muted-foreground">
+            {cat.baby
+              ? "A Doce Baby tem 4 fatias e só mistura com os sabores dela."
+              : "Misture sabores de Tradicionais, Especiais e Doces: troque de aba e escolha o outro sabor. Vale o valor do sabor mais caro."}
           </p>
-          <p className="mt-1 text-sm text-muted-foreground">{group.hint}</p>
 
-          <div className="mt-5 space-y-4">
-            <label className="block text-sm font-medium text-cream">
-              Sabor 1
-              <select
-                className={`${field} mt-2`}
-                value={flavor1}
-                onChange={(e) => {
-                  setFlavor1(e.target.value);
-                  if (e.target.value === flavor2) setFlavor2("");
-                  setAdded(false);
-                }}
-              >
-                <option value="">Toque para escolher…</option>
-                {options.map((o) => (
-                  <optgroup
-                    key={o.title}
-                    label={`${o.title.replace("Pizzas ", "")} — ${formatBRL(o.price)}`}
+          {/* Os dois sabores (metades) */}
+          <div className="mt-4 grid grid-cols-2 gap-3">
+            {([1, 2] as const).map((n) => {
+              const slot = n === 1 ? slot1 : slot2;
+              const active = activeSlot === n;
+              return (
+                <div
+                  key={n}
+                  className={`relative rounded-xl border-2 transition-colors ${
+                    active ? "border-gold bg-gold/10" : "border-gold/30 bg-secondary"
+                  }`}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setActiveSlot(n)}
+                    className="block w-full rounded-xl px-3 py-3 pr-10 text-left"
                   >
-                    {o.items.map((it) => (
-                      <option key={it.name} value={it.name}>
-                        {it.name}
-                      </option>
-                    ))}
-                  </optgroup>
-                ))}
-              </select>
-            </label>
-            <label className="block text-sm font-medium text-cream">
-              Sabor 2 <span className="font-normal text-muted-foreground">(opcional, meia a meia)</span>
-              <select
-                className={`${field} mt-2 disabled:opacity-50`}
-                value={flavor2}
-                onChange={(e) => {
-                  setFlavor2(e.target.value);
-                  setAdded(false);
-                }}
-                disabled={!flavor1}
-              >
-                <option value="">Só um sabor</option>
-                {options.map((o) => (
-                  <optgroup
-                    key={o.title}
-                    label={`${o.title.replace("Pizzas ", "")} — ${formatBRL(o.price)}`}
-                  >
-                    {o.items
-                      .filter((it) => it.name !== flavor1)
-                      .map((it) => (
-                        <option key={it.name} value={it.name}>
-                          {it.name}
-                        </option>
-                      ))}
-                  </optgroup>
-                ))}
-              </select>
-            </label>
+                    <span className="block text-xs font-semibold uppercase tracking-widest text-gold">
+                      Sabor {n}
+                      {n === 2 ? " (opcional)" : ""}
+                    </span>
+                    <span
+                      className={`mt-1 block text-sm ${slot ? "font-semibold text-cream" : "text-muted-foreground"}`}
+                    >
+                      {slot ? slot.name : active ? "Escolha abaixo ↓" : "Toque para escolher"}
+                    </span>
+                  </button>
+                  {slot && (
+                    <button
+                      type="button"
+                      aria-label={`Remover sabor ${n}`}
+                      onClick={() => clearSlot(n)}
+                      className="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-full border border-gold/40 text-gold transition-colors hover:bg-gold hover:text-primary-foreground"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  )}
+                </div>
+              );
+            })}
           </div>
 
-          {flavor1 && (
-            <div className="mt-5 flex items-baseline justify-between rounded-xl border border-gold/40 bg-gold/10 px-4 py-3">
-              <span className="text-sm text-cream">{flavorText(currentFlavors)}</span>
-              <span className="font-display text-xl font-bold text-gold">
+          {slot1 && !slot2 && activeSlot === 1 && (
+            <p className="mt-2 text-xs text-gold">
+              Quer meia a meia? Toque em “Sabor 2” e escolha a outra metade.
+            </p>
+          )}
+          {notice && <p className="mt-2 text-sm font-medium text-gold">{notice}</p>}
+
+          {/* Sabores da aba escolhida */}
+          <p className="mt-5 text-xs font-semibold uppercase tracking-widest text-gold">
+            {cat.title} · toque para colocar no Sabor {activeSlot}
+          </p>
+          <div className="mt-3 grid gap-2 sm:grid-cols-2">
+            {cat.items.map((it) => {
+              const mark = isPicked(slot1, it.name) ? 1 : isPicked(slot2, it.name) ? 2 : 0;
+              return (
+                <button
+                  key={it.name}
+                  type="button"
+                  onClick={() => pickFlavor(it.name)}
+                  className={`flex items-start justify-between gap-3 rounded-xl border px-4 py-3 text-left transition-colors ${
+                    mark ? "border-gold bg-gold/15" : "border-gold/30 bg-secondary hover:border-gold"
+                  }`}
+                >
+                  <span>
+                    <span className="flex flex-wrap items-center gap-2 font-semibold text-cream">
+                      {it.name}
+                      {it.tag && (
+                        <span className="rounded-full bg-gold/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-gold">
+                          {it.tag}
+                        </span>
+                      )}
+                    </span>
+                    <span className="mt-1 line-clamp-2 block text-xs text-muted-foreground">
+                      {it.desc}
+                    </span>
+                  </span>
+                  {mark > 0 && (
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold text-xs font-bold text-primary-foreground">
+                      {mark}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+
+          {picks.length > 0 && (
+            <div className="mt-5 flex items-baseline justify-between gap-3 rounded-xl border border-gold/40 bg-gold/10 px-4 py-3">
+              <span className="text-sm text-cream">{flavorText(picks.map((p) => p.name))}</span>
+              <span className="shrink-0 font-display text-xl font-bold text-gold">
                 {formatBRL(currentPrice)}
               </span>
             </div>
@@ -318,7 +363,7 @@ export function OrderBuilder() {
             <button
               type="button"
               onClick={addPizza}
-              disabled={!flavor1}
+              disabled={picks.length === 0}
               className="w-full rounded-full bg-primary px-6 py-3.5 text-sm font-bold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-[1.02] disabled:cursor-not-allowed disabled:border disabled:border-gold/40 disabled:bg-transparent disabled:text-gold/50 disabled:hover:scale-100 sm:w-auto"
             >
               Adicionar ao pedido
