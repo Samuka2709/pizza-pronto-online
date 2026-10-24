@@ -9,21 +9,12 @@ const WHATSAPP_NUMBER = "5573998548191";
 const groups = [
   {
     key: "salgada",
-    title: "Salgada",
-    label: "Pizza Salgada",
+    title: "Pizza",
+    label: "Pizza",
     slices: "8 fatias",
-    hint: "Misturou tradicional com especial? Vale o valor da especial.",
+    hint: "Misture à vontade: tradicional, especial ou doce. Vale o valor do sabor mais caro.",
     from: toNumber(sections[0].price),
-    sections: [sections[0], sections[1]],
-  },
-  {
-    key: "doce",
-    title: "Doce",
-    label: "Pizza Doce",
-    slices: "8 fatias",
-    hint: "Escolha até 2 sabores na mesma pizza.",
-    from: toNumber(sections[2].price),
-    sections: [sections[2]],
+    sections: [sections[0], sections[1], sections[2]],
   },
   {
     key: "baby",
@@ -224,7 +215,7 @@ export function OrderBuilder() {
         <section className={card}>
           <StepTitle n={1}>Escolha sua pizza</StepTitle>
 
-          <div className="mt-5 grid grid-cols-3 gap-2">
+          <div className="mt-5 grid grid-cols-2 gap-2">
             {groups.map((g, i) => (
               <button
                 key={g.key}
