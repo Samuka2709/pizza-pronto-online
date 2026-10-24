@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { OrderBuilder } from "@/components/OrderBuilder";
 
+// Troque pela URL final do seu site (ex.: https://cerqueiraspizza.com.br)
 const siteUrl = "https://id-preview--b406a94a-6eb1-4481-9555-018367b54ca6.lovable.app";
-const ogImage = `${siteUrl}/__l5e/assets-v1/d1de99d4-6499-4129-8c12-81265228e38e/cerqueiras-logo.jpg`;
+const ogImage = `${siteUrl}/cerqueiras-logo.jpg`;
 
 export const Route = createFileRoute("/pedido")({
   head: () => ({
@@ -45,8 +47,8 @@ const channels = [
 ];
 
 const steps = [
-  { n: "01", t: "Chame no WhatsApp", d: "Fale com a gente pelo link acima." },
-  { n: "02", t: "Monte seu pedido", d: "Escolha as pizzas e bebidas do cardápio." },
+  { n: "01", t: "Monte seu pedido", d: "Escolha as pizzas, os sabores e as bebidas aqui no site." },
+  { n: "02", t: "Envie pelo WhatsApp", d: "Sua mensagem já vai pronta, é só confirmar o envio." },
   { n: "03", t: "Receba em casa", d: "Entregamos quentinha, direto na sua porta." },
 ];
 
@@ -62,7 +64,12 @@ function Pedido() {
         <div className="mx-auto mt-6 h-px max-w-xs hairline-gold" />
       </header>
 
-      <div className="mt-16 grid gap-6 md:grid-cols-2">
+      <OrderBuilder />
+
+      <h2 className="mt-24 text-center font-display text-2xl font-bold text-cream">
+        Prefere falar com a gente?
+      </h2>
+      <div className="mt-8 grid gap-6 md:grid-cols-2">
         {channels.map((c) => (
           <a
             key={c.name}
