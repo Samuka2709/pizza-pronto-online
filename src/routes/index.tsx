@@ -286,17 +286,15 @@ function Index() {
             Fome de pizza de verdade?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-            Chame no WhatsApp e peça delivery em Cururupe, Ilhéus.
+            Monte seu pedido aqui e envie pelo WhatsApp. Delivery em Cururupe, Ilhéus.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <a
-              href="https://wa.me/5573998548191"
-              target="_blank"
-              rel="noopener noreferrer"
+                     <Link
+              to="/pedido"
               className="rounded-full bg-primary px-7 py-3 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105"
             >
-              Pedir pelo WhatsApp
-            </a>
+              Monte seu pedido
+            </Link>
             <a
               href="https://www.instagram.com/cerqueiraspizza?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
               target="_blank"
