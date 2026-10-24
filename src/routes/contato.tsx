@@ -1,8 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-const siteUrl = "https://id-preview--b406a94a-6eb1-4481-9555-018367b54ca6.lovable.app";
-const ogImage = `${siteUrl}/__l5e/assets-v1/d1de99d4-6499-4129-8c12-81265228e38e/cerqueiras-logo.jpg`;
-
+const siteUrl = "https://pizza-pronto-online.vercel.app";
+const ogImage = `${siteUrl}/cerqueiras-logo.jpg`;
 export const Route = createFileRoute("/contato")({
   head: () => ({
     meta: [
