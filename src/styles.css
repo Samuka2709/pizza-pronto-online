@@ -187,3 +187,33 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+   /* ===== Fundo sutil: brilho dourado, anéis finos e grão ===== */
+body {
+  position: relative;
+  isolation: isolate;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 100% 24%, transparent 0 13.9rem, oklch(0.76 0.132 85 / 0.22) 14rem 14.06rem, transparent 14.12rem),
+    radial-gradient(circle at 0% 78%, transparent 0 10.9rem, oklch(0.76 0.132 85 / 0.18) 11rem 11.06rem, transparent 11.12rem),
+    radial-gradient(ellipse 60rem 40rem at 85% -5%, oklch(0.76 0.132 85 / 0.10), transparent 65%),
+    radial-gradient(ellipse 50rem 40rem at -10% 50%, oklch(0.76 0.132 85 / 0.06), transparent 65%),
+    radial-gradient(ellipse 55rem 35rem at 105% 105%, oklch(0.62 0.12 60 / 0.08), transparent 65%);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}   
