@@ -165,14 +165,12 @@ function Header() {
               {l.label}
             </Link>
           ))}
-          <a
-            href="https://wa.me/5573998548191"
-            target="_blank"
-            rel="noopener noreferrer"
+                   <Link
+            to="/pedido"
             className="rounded-full bg-primary px-5 py-2 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105"
           >
             Pedir agora
-          </a>
+          </Link>
         </nav>
 
         <button
