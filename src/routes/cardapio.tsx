@@ -65,7 +65,9 @@ function Cardapio() {
 
       <div className="mx-auto max-w-6xl">
         <header className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">Nosso cardápio</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
+            Nosso cardápio
+          </p>
           <h1 className="mt-3 font-display text-4xl font-bold text-cream sm:text-5xl">
             Feita com carinho
           </h1>
@@ -80,7 +82,9 @@ function Cardapio() {
             <section key={s.title}>
               <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-gold/30 pb-3">
                 <div>
-                  <h2 className="font-display text-2xl font-bold text-gold sm:text-3xl">{s.title}</h2>
+                  <h2 className="font-display text-2xl font-bold text-gold sm:text-3xl">
+                    {s.title}
+                  </h2>
                   <p className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">
                     {s.note}
                   </p>

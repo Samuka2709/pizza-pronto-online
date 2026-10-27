@@ -57,7 +57,9 @@ function Pedido() {
     <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
       <header className="text-center">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">Pedir online</p>
-        <h1 className="mt-3 font-display text-4xl font-bold text-cream sm:text-5xl">Sua pizza a caminho</h1>
+        <h1 className="mt-3 font-display text-4xl font-bold text-cream sm:text-5xl">
+          Sua pizza a caminho
+        </h1>
         <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
           Atendemos de terça a domingo, das 18h às 22h. Cozinhamos assim que o pedido chega.
         </p>
@@ -96,7 +98,10 @@ function Pedido() {
         <h2 className="text-center font-display text-2xl font-bold text-cream">Como funciona</h2>
         <div className="mt-10 grid gap-6 sm:grid-cols-3">
           {steps.map((s) => (
-            <div key={s.n} className="rounded-2xl border border-border/40 bg-card/40 p-6 text-center">
+            <div
+              key={s.n}
+              className="rounded-2xl border border-border/40 bg-card/40 p-6 text-center"
+            >
               <p className="gold-text font-display text-4xl font-bold">{s.n}</p>
               <p className="mt-3 font-display text-lg font-bold text-cream">{s.t}</p>
               <p className="mt-2 text-sm text-muted-foreground">{s.d}</p>
@@ -107,7 +112,9 @@ function Pedido() {
 
       <div className="mt-16 rounded-2xl border border-gold/30 bg-secondary/40 p-8 text-center sm:p-12">
         <p className="text-sm text-muted-foreground">Horário de atendimento</p>
-        <p className="mt-2 font-display text-3xl font-bold text-gold">Terça a domingo · 18h — 22h</p>
+        <p className="mt-2 font-display text-3xl font-bold text-gold">
+          Terça a domingo · 18h — 22h
+        </p>
         <p className="mt-4 text-sm text-muted-foreground">Cururupe · Ilhéus / BA</p>
       </div>
     </div>

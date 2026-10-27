@@ -323,7 +323,9 @@ export function OrderBuilder() {
                   type="button"
                   onClick={() => pickFlavor(it.name)}
                   className={`flex items-start justify-between gap-3 rounded-xl border px-4 py-3 text-left transition-colors ${
-                    mark ? "border-gold bg-gold/15" : "border-gold/30 bg-secondary hover:border-gold"
+                    mark
+                      ? "border-gold bg-gold/15"
+                      : "border-gold/30 bg-secondary hover:border-gold"
                   }`}
                 >
                   <span>

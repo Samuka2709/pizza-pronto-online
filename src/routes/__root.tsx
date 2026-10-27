@@ -90,8 +90,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "Cerqueira's Pizza — Pizzaria em Ilhéus/BA" },
       {
         property: "og:description",
-        content:
-          "Feita com carinho, para reunir quem você ama. Delivery em Cururupe, Ilhéus/BA.",
+        content: "Feita com carinho, para reunir quem você ama. Delivery em Cururupe, Ilhéus/BA.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -153,7 +152,6 @@ function Header() {
           </span>
         </Link>
 
-
         <nav className="hidden items-center gap-8 md:flex">
           {navLinks.map((l) => (
             <Link
@@ -165,7 +163,7 @@ function Header() {
               {l.label}
             </Link>
           ))}
-                   <Link
+          <Link
             to="/pedido"
             className="rounded-full bg-primary px-5 py-2 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105"
           >
@@ -205,7 +203,11 @@ function Header() {
       </div>
 
       {open && (
-        <nav id="mobile-nav" aria-label="Menu principal" className="border-t border-border/60 bg-background px-4 py-4 md:hidden">
+        <nav
+          id="mobile-nav"
+          aria-label="Menu principal"
+          className="border-t border-border/60 bg-background px-4 py-4 md:hidden"
+        >
           <div className="flex flex-col gap-4">
             {navLinks.map((l) => (
               <Link
@@ -221,7 +223,6 @@ function Header() {
           </div>
         </nav>
       )}
-
     </header>
   );
 }
@@ -306,7 +307,6 @@ function RootComponent() {
         </main>
         <Footer />
       </div>
-
     </QueryClientProvider>
   );
 }

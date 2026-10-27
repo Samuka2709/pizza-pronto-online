@@ -53,14 +53,7 @@ export const Route = createFileRoute("/")({
           openingHoursSpecification: [
             {
               "@type": "OpeningHoursSpecification",
-              dayOfWeek: [
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-                "Sunday",
-              ],
+              dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
               opens: "18:00",
               closes: "22:00",
             },
@@ -130,7 +123,7 @@ function Index() {
               Delivery de terça a domingo, das 18h às 22h.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-                          <Link
+              <Link
                 to="/pedido"
                 className="rounded-full bg-primary px-7 py-3 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105"
               >
@@ -148,8 +141,10 @@ function Index() {
       </section>
 
       {/* Animated marquee bridge — decorativo */}
-      <section aria-hidden="true" className="relative overflow-hidden border-y border-gold/30 bg-secondary/50 py-10">
-
+      <section
+        aria-hidden="true"
+        className="relative overflow-hidden border-y border-gold/30 bg-secondary/50 py-10"
+      >
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-background to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-background to-transparent" />
 
@@ -158,19 +153,33 @@ function Index() {
           <div className="flex shrink-0 animate-marquee-left items-center gap-8 whitespace-nowrap">
             {[...Array(2)].map((_, i) => (
               <div key={i} className="flex items-center gap-8">
-                <span className="font-display text-3xl font-bold text-cream sm:text-5xl">Cerqueira&apos;s Pizza</span>
+                <span className="font-display text-3xl font-bold text-cream sm:text-5xl">
+                  Cerqueira&apos;s Pizza
+                </span>
                 <Pizza className="h-8 w-8 text-gold" />
-                <span className="font-display text-3xl font-bold text-gold sm:text-5xl">Lombinho com Cream Cheese</span>
+                <span className="font-display text-3xl font-bold text-gold sm:text-5xl">
+                  Lombinho com Cream Cheese
+                </span>
                 <Flame className="h-8 w-8 text-gold" />
-                <span className="font-display text-3xl font-bold text-cream sm:text-5xl">4 Queijos</span>
+                <span className="font-display text-3xl font-bold text-cream sm:text-5xl">
+                  4 Queijos
+                </span>
                 <Pizza className="h-8 w-8 text-gold" />
-                <span className="font-display text-3xl font-bold text-gold sm:text-5xl">À Moda da Casa</span>
+                <span className="font-display text-3xl font-bold text-gold sm:text-5xl">
+                  À Moda da Casa
+                </span>
                 <Truck className="h-8 w-8 text-gold" />
-                <span className="font-display text-3xl font-bold text-cream sm:text-5xl">Delivery em Ilhéus</span>
+                <span className="font-display text-3xl font-bold text-cream sm:text-5xl">
+                  Delivery em Ilhéus
+                </span>
                 <MapPin className="h-8 w-8 text-gold" />
-                <span className="font-display text-3xl font-bold text-gold sm:text-5xl">Cururupe · BA</span>
+                <span className="font-display text-3xl font-bold text-gold sm:text-5xl">
+                  Cururupe · BA
+                </span>
                 <Clock className="h-8 w-8 text-gold" />
-                <span className="font-display text-3xl font-bold text-cream sm:text-5xl">Ter a Dom · 18h — 22h</span>
+                <span className="font-display text-3xl font-bold text-cream sm:text-5xl">
+                  Ter a Dom · 18h — 22h
+                </span>
               </div>
             ))}
           </div>
@@ -181,15 +190,25 @@ function Index() {
           <div className="flex shrink-0 animate-marquee-right items-center gap-8 whitespace-nowrap">
             {[...Array(2)].map((_, i) => (
               <div key={i} className="flex items-center gap-8">
-                <span className="font-display text-2xl font-bold text-gold/80 sm:text-4xl">Massa artesanal</span>
+                <span className="font-display text-2xl font-bold text-gold/80 sm:text-4xl">
+                  Massa artesanal
+                </span>
                 <span className="font-display text-2xl font-bold text-cream/60 sm:text-4xl">•</span>
-                <span className="font-display text-2xl font-bold text-gold/80 sm:text-4xl">Ingredientes frescos</span>
+                <span className="font-display text-2xl font-bold text-gold/80 sm:text-4xl">
+                  Ingredientes frescos
+                </span>
                 <span className="font-display text-2xl font-bold text-cream/60 sm:text-4xl">•</span>
-                <span className="font-display text-2xl font-bold text-gold/80 sm:text-4xl">Sabor que fica</span>
+                <span className="font-display text-2xl font-bold text-gold/80 sm:text-4xl">
+                  Sabor que fica
+                </span>
                 <span className="font-display text-2xl font-bold text-cream/60 sm:text-4xl">•</span>
-                <span className="font-display text-2xl font-bold text-gold/80 sm:text-4xl">Feita com carinho</span>
+                <span className="font-display text-2xl font-bold text-gold/80 sm:text-4xl">
+                  Feita com carinho
+                </span>
                 <span className="font-display text-2xl font-bold text-cream/60 sm:text-4xl">•</span>
-                <span className="font-display text-2xl font-bold text-gold/80 sm:text-4xl">Para reunir quem você ama</span>
+                <span className="font-display text-2xl font-bold text-gold/80 sm:text-4xl">
+                  Para reunir quem você ama
+                </span>
                 <span className="font-display text-2xl font-bold text-cream/60 sm:text-4xl">•</span>
               </div>
             ))}
@@ -216,8 +235,12 @@ function Index() {
       {/* Featured pizzas */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <div className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">Especialidades</p>
-          <h2 className="mt-3 font-display text-4xl font-bold text-cream">As queridinhas da casa</h2>
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
+            Especialidades
+          </p>
+          <h2 className="mt-3 font-display text-4xl font-bold text-cream">
+            As queridinhas da casa
+          </h2>
           <div className="mx-auto mt-6 h-px max-w-xs hairline-gold" />
         </div>
 
@@ -289,7 +312,7 @@ function Index() {
             Monte seu pedido aqui e envie pelo WhatsApp. Delivery em Cururupe, Ilhéus.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-                     <Link
+            <Link
               to="/pedido"
               className="rounded-full bg-primary px-7 py-3 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105"
             >
