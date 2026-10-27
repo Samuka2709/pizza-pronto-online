@@ -42,7 +42,7 @@ function Historia() {
     <div className="mx-auto max-w-5xl px-4 py-20 sm:px-6">
       <header className="text-center">
         <img
-          src={logo.url}
+          src="/cerqueiras-logo.jpg"
           alt="Logo da Cerqueira's Pizza"
           width={112}
           height={112}
