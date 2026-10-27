@@ -1,10 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { sections, drinks } from "@/lib/menu";
 import { Pizza } from "lucide-react";
-
-// Troque pela URL final do seu site (ex.: https://cerqueiraspizza.com.br)
-const siteUrl = "https://pizza-pronto-online.vercel.app";
-const ogImage = `${siteUrl}/cerqueiras-logo.jpg`;
+import { OG_IMAGE as ogImage } from "@/lib/site";
 
 export const Route = createFileRoute("/cardapio")({
   head: () => ({

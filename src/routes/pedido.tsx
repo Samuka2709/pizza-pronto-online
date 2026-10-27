@@ -1,9 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { OrderBuilder } from "@/components/OrderBuilder";
-
-// Troque pela URL final do seu site (ex.: https://cerqueiraspizza.com.br)
-const siteUrl = "https://pizza-pronto-online.vercel.app";
-const ogImage = `${siteUrl}/cerqueiras-logo.jpg`;
+import { OG_IMAGE as ogImage } from "@/lib/site";
 
 export const Route = createFileRoute("/pedido")({
   head: () => ({

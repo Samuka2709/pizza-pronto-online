@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { OG_IMAGE as ogImage } from "@/lib/site";
 
-const siteUrl = "https://pizza-pronto-online.vercel.app";
-const ogImage = `${siteUrl}/cerqueiras-logo.jpg`;
 export const Route = createFileRoute("/contato")({
   head: () => ({
     meta: [

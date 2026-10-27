@@ -1,10 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Clock, Flame, MapPin, Pizza, Truck } from "lucide-react";
 import heroPizza from "../assets/hero-lombinho.webp";
-import logo from "../assets/cerqueiras-logo.jpg.asset.json";
-
-const siteUrl = "https://pizza-pronto-online.vercel.app";
-const ogImage = `${siteUrl}/cerqueiras-logo.jpg`;
+import { OG_IMAGE as ogImage, SITE_URL as siteUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
