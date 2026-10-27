@@ -1,28 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { OG_IMAGE as ogImage } from "@/lib/site";
+import { pageHead } from "@/lib/site";
 
 export const Route = createFileRoute("/historia")({
-  head: () => ({
-    meta: [
-      { title: "Nossa História — Cerqueira's Pizza" },
-      {
-        name: "description",
-        content:
-          "Por que Cerqueira's Pizza? Nasceu da vontade de levar pizzas feitas com carinho para reunir famílias, amigos e criar bons momentos em Ilhéus/BA.",
-      },
-      { property: "og:title", content: "Nossa História — Cerqueira's Pizza" },
-      {
-        property: "og:description",
-        content:
-          "Mais do que um sobrenome, uma história: pizzas feitas com carinho para reunir quem você ama.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:image", content: ogImage },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: ogImage },
-    ],
-    links: [{ rel: "canonical", href: "/historia" }],
-  }),
+  head: () =>
+    pageHead({
+      path: "/historia",
+      title: "Nossa História — Cerqueira's Pizza",
+      description:
+        "Por que Cerqueira's Pizza? Nasceu da vontade de levar pizzas feitas com carinho para reunir famílias, amigos e criar bons momentos em Ilhéus/BA.",
+      ogDescription:
+        "Mais do que um sobrenome, uma história: pizzas feitas com carinho para reunir quem você ama.",
+    }),
   component: Historia,
 });
 

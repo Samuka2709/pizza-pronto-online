@@ -93,7 +93,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content: "Feita com carinho, para reunir quem você ama. Delivery em Cururupe, Ilhéus/BA.",
       },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:card", content: "summary" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },

@@ -1,28 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { OrderBuilder } from "@/components/OrderBuilder";
-import { OG_IMAGE as ogImage } from "@/lib/site";
+import { pageHead } from "@/lib/site";
 
 export const Route = createFileRoute("/pedido")({
-  head: () => ({
-    meta: [
-      { title: "Pedir Online — Cerqueira's Pizza" },
-      {
-        name: "description",
-        content:
-          "Peça sua pizza da Cerqueira's Pizza pelo WhatsApp. Delivery em Cururupe, Ilhéus/BA, de terça a domingo das 18h às 22h.",
-      },
-      { property: "og:title", content: "Pedir Online — Cerqueira's Pizza" },
-      {
-        property: "og:description",
-        content: "Delivery em Ilhéus/BA. Peça pelo WhatsApp, terça a domingo, 18h às 22h.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:image", content: ogImage },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: ogImage },
-    ],
-    links: [{ rel: "canonical", href: "/pedido" }],
-  }),
+  head: () =>
+    pageHead({
+      path: "/pedido",
+      title: "Pedir Online — Cerqueira's Pizza",
+      description:
+        "Peça sua pizza da Cerqueira's Pizza pelo WhatsApp. Delivery em Cururupe, Ilhéus/BA, de terça a domingo das 18h às 22h.",
+      ogDescription: "Delivery em Ilhéus/BA. Peça pelo WhatsApp, terça a domingo, 18h às 22h.",
+    }),
   component: Pedido,
 });
 

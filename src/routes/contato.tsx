@@ -1,27 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { OG_IMAGE as ogImage } from "@/lib/site";
+import { pageHead } from "@/lib/site";
 
 export const Route = createFileRoute("/contato")({
-  head: () => ({
-    meta: [
-      { title: "Localização & Contato — Cerqueira's Pizza" },
-      {
-        name: "description",
-        content:
-          "Cerqueira's Pizza em Cururupe, Ilhéus/BA. Horários de terça a domingo das 18h às 22h, WhatsApp, Instagram e mapa.",
-      },
-      { property: "og:title", content: "Localização & Contato — Cerqueira's Pizza" },
-      {
-        property: "og:description",
-        content: "Cururupe, Ilhéus/BA. Terça a domingo, 18h às 22h. Delivery.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:image", content: ogImage },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: ogImage },
-    ],
-    links: [{ rel: "canonical", href: "/contato" }],
-  }),
+  head: () =>
+    pageHead({
+      path: "/contato",
+      title: "Localização & Contato — Cerqueira's Pizza",
+      description:
+        "Cerqueira's Pizza em Cururupe, Ilhéus/BA. Horários de terça a domingo das 18h às 22h, WhatsApp, Instagram e mapa.",
+      ogDescription: "Cururupe, Ilhéus/BA. Terça a domingo, 18h às 22h. Delivery.",
+    }),
   component: Contato,
 });
 

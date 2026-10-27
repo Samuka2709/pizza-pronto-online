@@ -4,32 +4,59 @@ import heroPizza from "../assets/hero-lombinho.webp";
 import hero640 from "../assets/hero-lombinho-640.webp";
 import hero960 from "../assets/hero-lombinho-960.webp";
 import hero1280 from "../assets/hero-lombinho-1280.webp";
-import { OG_IMAGE as ogImage, SITE_URL as siteUrl } from "@/lib/site";
+import { OG_IMAGE, SITE_NAME, SITE_URL, pageHead } from "@/lib/site";
 
 // Versões menores da foto principal para o celular (o navegador escolhe pela largura da tela).
 const heroSrcSet = `${hero640} 640w, ${hero960} 960w, ${hero1280} 1280w, ${heroPizza} 1600w`;
 const heroSizes = "100vw";
 
+const head = pageHead({
+  path: "/",
+  title: "Cerqueira's Pizza — Pizzaria em Cururupe, Ilhéus/BA",
+  description:
+    "Feita com carinho, para reunir quem você ama. Pizzas tradicionais, especiais e doces em Cururupe, Ilhéus/BA. Delivery, terça a domingo das 18h às 22h.",
+  ogDescription:
+    "Ingredientes selecionados, sabor que fica. Delivery em Ilhéus/BA, terça a domingo das 18h às 22h.",
+});
+
+// Dados estruturados (schema.org) só com informações publicadas no próprio site.
+const restaurantJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "@id": `${SITE_URL}/#restaurante`,
+  name: SITE_NAME,
+  url: SITE_URL,
+  image: OG_IMAGE,
+  logo: `${SITE_URL}/cerqueiras-logo.jpg`,
+  slogan: "Feita com carinho, para reunir quem você ama.",
+  servesCuisine: "Pizza",
+  priceRange: "R$ 34,90 - R$ 69,90",
+  currenciesAccepted: "BRL",
+  paymentAccepted: "Pix, Cartão, Dinheiro",
+  telephone: "+55 73 99854-8191",
+  hasMenu: `${SITE_URL}/cardapio`,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Cururupe",
+    addressLocality: "Ilhéus",
+    addressRegion: "BA",
+    addressCountry: "BR",
+  },
+  areaServed: "Cururupe, Ilhéus - BA",
+  sameAs: ["https://www.instagram.com/cerqueiraspizza"],
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      opens: "18:00",
+      closes: "22:00",
+    },
+  ],
+};
+
 export const Route = createFileRoute("/")({
   head: () => ({
-    meta: [
-      { title: "Cerqueira's Pizza — Pizzaria em Cururupe, Ilhéus/BA" },
-      {
-        name: "description",
-        content:
-          "Feita com carinho, para reunir quem você ama. Pizzas tradicionais, especiais e doces em Cururupe, Ilhéus/BA. Delivery, terça a domingo das 18h às 22h.",
-      },
-      { property: "og:title", content: "Cerqueira's Pizza — Pizzaria em Cururupe, Ilhéus/BA" },
-      {
-        property: "og:description",
-        content:
-          "Ingredientes selecionados, sabor que fica. Delivery em Ilhéus/BA, terça a domingo das 18h às 22h.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:image", content: ogImage },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: ogImage },
-    ],
+    meta: head.meta,
     links: [
       {
         rel: "preload",
@@ -39,39 +66,9 @@ export const Route = createFileRoute("/")({
         imageSizes: heroSizes,
         fetchPriority: "high",
       },
-      { rel: "canonical", href: "/" },
+      ...head.links,
     ],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Restaurant",
-          name: "Cerqueira's Pizza",
-          image: ogImage,
-          servesCuisine: "Pizza",
-          priceRange: "R$ 34,90 - R$ 69,90",
-          telephone: "+55 73 99854-8191",
-          url: siteUrl,
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Ilhéus",
-            addressRegion: "BA",
-            addressCountry: "BR",
-            streetAddress: "Cururupe",
-          },
-          sameAs: ["https://www.instagram.com/cerqueiraspizza"],
-          openingHoursSpecification: [
-            {
-              "@type": "OpeningHoursSpecification",
-              dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-              opens: "18:00",
-              closes: "22:00",
-            },
-          ],
-        }),
-      },
-    ],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(restaurantJsonLd) }],
   }),
   component: Index,
 });
