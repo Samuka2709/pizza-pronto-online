@@ -1,5 +1,7 @@
 @import "tailwindcss" source(none);
 @source "../src";
+/* Os componentes shadcn de src/components/ui não são usados pelas páginas; não gerar CSS para eles. */
+@source not "./components/ui";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
