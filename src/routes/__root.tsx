@@ -90,18 +90,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "Cerqueira's Pizza — Pizzaria em Ilhéus/BA" },
       {
         property: "og:description",
-        content:
-          "Feita com carinho, para reunir quem você ama. Delivery em Cururupe, Ilhéus/BA.",
+        content: "Feita com carinho, para reunir quem você ama. Delivery em Cururupe, Ilhéus/BA.",
       },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:card", content: "summary" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap",
       },
       { rel: "stylesheet", href: appCss },
       { rel: "icon", type: "image/png", href: "/favicon.png" },
@@ -143,7 +142,7 @@ function Header() {
         <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
           <img
             src="/cerqueiras-logo.jpg"
-            alt="Logo da Cerqueira's Pizza"
+            alt=""
             width={40}
             height={40}
             className="h-10 w-10 rounded-full"
@@ -153,21 +152,20 @@ function Header() {
           </span>
         </Link>
 
-
         <nav className="hidden items-center gap-8 md:flex">
           {navLinks.map((l) => (
             <Link
               key={l.to}
               to={l.to}
-              className="text-sm font-medium uppercase tracking-widest text-muted-foreground transition-colors hover:text-gold"
+              className="inline-flex items-center text-sm font-medium uppercase tracking-widest text-muted-foreground transition-colors hover:text-gold"
               activeProps={{ className: "text-gold" }}
             >
               {l.label}
             </Link>
           ))}
-                   <Link
+          <Link
             to="/pedido"
-            className="rounded-full bg-primary px-5 py-2 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105"
+            className="inline-flex items-center rounded-full bg-primary px-5 py-2 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105"
           >
             Pedir agora
           </Link>
@@ -178,7 +176,7 @@ function Header() {
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
           aria-controls="mobile-nav"
-          className="flex h-10 w-10 items-center justify-center text-gold md:hidden"
+          className="flex h-11 w-11 items-center justify-center rounded-full text-gold md:hidden"
           onClick={() => setOpen((v) => !v)}
         >
           <svg
@@ -205,14 +203,18 @@ function Header() {
       </div>
 
       {open && (
-        <nav id="mobile-nav" aria-label="Menu principal" className="border-t border-border/60 bg-background px-4 py-4 md:hidden">
-          <div className="flex flex-col gap-4">
+        <nav
+          id="mobile-nav"
+          aria-label="Menu principal"
+          className="border-t border-border/60 bg-background px-4 py-4 md:hidden"
+        >
+          <div className="flex flex-col gap-1">
             {navLinks.map((l) => (
               <Link
                 key={l.to}
                 to={l.to}
                 onClick={() => setOpen(false)}
-                className="text-sm font-medium uppercase tracking-widest text-muted-foreground"
+                className="flex items-center text-sm font-medium uppercase tracking-widest text-muted-foreground"
                 activeProps={{ className: "text-gold" }}
               >
                 {l.label}
@@ -221,7 +223,6 @@ function Header() {
           </div>
         </nav>
       )}
-
     </header>
   );
 }
@@ -242,10 +243,13 @@ function Footer() {
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-widest text-gold">Navegação</p>
-            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+            <ul className="mt-1 text-sm text-muted-foreground">
               {navLinks.map((l) => (
                 <li key={l.to}>
-                  <Link to={l.to} className="transition-colors hover:text-cream">
+                  <Link
+                    to={l.to}
+                    className="inline-flex items-center transition-colors hover:text-cream"
+                  >
                     {l.label}
                   </Link>
                 </li>
@@ -261,7 +265,7 @@ function Footer() {
               <li>
                 <a
                   href="https://wa.me/5573998548191"
-                  className="transition-colors hover:text-cream"
+                  className="inline-flex items-center transition-colors hover:text-cream"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -270,7 +274,7 @@ function Footer() {
                 {" · "}
                 <a
                   href="https://www.instagram.com/cerqueiraspizza?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                  className="transition-colors hover:text-cream"
+                  className="inline-flex items-center transition-colors hover:text-cream"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -306,7 +310,6 @@ function RootComponent() {
         </main>
         <Footer />
       </div>
-
     </QueryClientProvider>
   );
 }

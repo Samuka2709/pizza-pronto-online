@@ -1,32 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { sections, drinks } from "@/lib/menu";
 import { Pizza } from "lucide-react";
-
-// Troque pela URL final do seu site (ex.: https://cerqueiraspizza.com.br)
-const siteUrl = "https://pizza-pronto-online.vercel.app";
-const ogImage = `${siteUrl}/cerqueiras-logo.jpg`;
+import { pageHead } from "@/lib/site";
 
 export const Route = createFileRoute("/cardapio")({
-  head: () => ({
-    meta: [
-      { title: "Cardápio — Cerqueira's Pizza" },
-      {
-        name: "description",
-        content:
-          "Cardápio da Cerqueira's Pizza: tradicionais R$ 59,90, especiais R$ 69,90, doces 8 fatias R$ 64,90, baby 4 fatias R$ 34,90 e bebidas. Delivery em Ilhéus/BA.",
-      },
-      { property: "og:title", content: "Cardápio — Cerqueira's Pizza" },
-      {
-        property: "og:description",
-        content: "Pizzas tradicionais, especiais, doces e bebidas. Delivery em Ilhéus/BA.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:image", content: ogImage },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: ogImage },
-    ],
-    links: [{ rel: "canonical", href: "/cardapio" }],
-  }),
+  head: () =>
+    pageHead({
+      path: "/cardapio",
+      title: "Cardápio — Cerqueira's Pizza",
+      description:
+        "Cardápio da Cerqueira's Pizza: tradicionais R$ 59,90, especiais R$ 69,90, doces 8 fatias R$ 64,90, baby 4 fatias R$ 34,90 e bebidas. Delivery em Ilhéus/BA.",
+      ogDescription: "Pizzas tradicionais, especiais, doces e bebidas. Delivery em Ilhéus/BA.",
+    }),
   component: Cardapio,
 });
 
@@ -34,7 +19,10 @@ function Cardapio() {
   return (
     <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6">
       {/* Left decorative accent */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-20 lg:block">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-y-0 left-0 hidden w-20 lg:block"
+      >
         <div className="sticky top-1/2 flex flex-col items-center gap-5 pt-32">
           <span className="block text-[10px] font-semibold uppercase tracking-[0.3em] text-gold/60 [writing-mode:vertical-rl]">
             Sabor
@@ -49,7 +37,10 @@ function Cardapio() {
       </div>
 
       {/* Right decorative accent */}
-      <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-20 lg:block">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-y-0 right-0 hidden w-20 lg:block"
+      >
         <div className="sticky top-1/2 flex flex-col items-center gap-5 pt-32">
           <span className="block text-[10px] font-semibold uppercase tracking-[0.3em] text-gold/60 [writing-mode:vertical-rl]">
             Tradição
@@ -65,7 +56,9 @@ function Cardapio() {
 
       <div className="mx-auto max-w-6xl">
         <header className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">Nosso cardápio</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
+            Nosso cardápio
+          </p>
           <h1 className="mt-3 font-display text-4xl font-bold text-cream sm:text-5xl">
             Feita com carinho
           </h1>
@@ -80,7 +73,9 @@ function Cardapio() {
             <section key={s.title}>
               <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-gold/30 pb-3">
                 <div>
-                  <h2 className="font-display text-2xl font-bold text-gold sm:text-3xl">{s.title}</h2>
+                  <h2 className="font-display text-2xl font-bold text-gold sm:text-3xl">
+                    {s.title}
+                  </h2>
                   <p className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">
                     {s.note}
                   </p>

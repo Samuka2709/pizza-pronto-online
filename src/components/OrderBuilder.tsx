@@ -239,6 +239,7 @@ export function OrderBuilder() {
               <button
                 key={c.title}
                 type="button"
+                aria-pressed={i === catIdx}
                 onClick={() => selectCat(i)}
                 className={`rounded-xl border px-3 py-3 text-left transition-colors ${
                   i === catIdx
@@ -275,8 +276,9 @@ export function OrderBuilder() {
                 >
                   <button
                     type="button"
+                    aria-pressed={active}
                     onClick={() => setActiveSlot(n)}
-                    className="block w-full rounded-xl px-3 py-3 pr-10 text-left"
+                    className="block w-full rounded-xl px-3 py-3 pr-12 text-left"
                   >
                     <span className="block text-xs font-semibold uppercase tracking-widest text-gold">
                       Sabor {n}
@@ -293,9 +295,11 @@ export function OrderBuilder() {
                       type="button"
                       aria-label={`Remover sabor ${n}`}
                       onClick={() => clearSlot(n)}
-                      className="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-full border border-gold/40 text-gold transition-colors hover:bg-gold hover:text-primary-foreground"
+                      className="group absolute right-0.5 top-0.5 flex h-11 w-11 items-center justify-center rounded-full"
                     >
-                      <X className="h-4 w-4" />
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full border border-gold/40 text-gold transition-colors group-hover:bg-gold group-hover:text-primary-foreground">
+                        <X className="h-4 w-4" />
+                      </span>
                     </button>
                   )}
                 </div>
@@ -308,7 +312,9 @@ export function OrderBuilder() {
               Quer meia a meia? Toque em “Sabor 2” e escolha a outra metade.
             </p>
           )}
-          {notice && <p className="mt-2 text-sm font-medium text-gold">{notice}</p>}
+          <p role="status" className={notice ? "mt-2 text-sm font-medium text-gold" : "sr-only"}>
+            {notice}
+          </p>
 
           {/* Sabores da aba escolhida */}
           <p className="mt-5 text-xs font-semibold uppercase tracking-widest text-gold">
@@ -321,9 +327,12 @@ export function OrderBuilder() {
                 <button
                   key={it.name}
                   type="button"
+                  aria-pressed={mark > 0}
                   onClick={() => pickFlavor(it.name)}
                   className={`flex items-start justify-between gap-3 rounded-xl border px-4 py-3 text-left transition-colors ${
-                    mark ? "border-gold bg-gold/15" : "border-gold/30 bg-secondary hover:border-gold"
+                    mark
+                      ? "border-gold bg-gold/15"
+                      : "border-gold/30 bg-secondary hover:border-gold"
                   }`}
                 >
                   <span>
@@ -369,11 +378,9 @@ export function OrderBuilder() {
               Adicionar ao pedido
             </button>
           </div>
-          {added && (
-            <p className="mt-3 text-sm font-medium text-gold">
-              ✓ Pizza adicionada! Escolha outra ou siga para as bebidas.
-            </p>
-          )}
+          <p role="status" className={added ? "mt-3 text-sm font-medium text-gold" : "sr-only"}>
+            {added ? "✓ Pizza adicionada! Escolha outra ou siga para as bebidas." : ""}
+          </p>
         </section>
 
         {/* 2. Bebidas */}
@@ -434,6 +441,7 @@ export function OrderBuilder() {
                   <button
                     key={p}
                     type="button"
+                    aria-pressed={payment === p}
                     onClick={() => setPayment(p)}
                     className={`rounded-xl border-2 px-4 py-3 text-sm font-semibold transition-colors ${
                       payment === p
@@ -518,12 +526,14 @@ export function OrderBuilder() {
             </p>
           </div>
 
-          {touched && isEmpty && (
-            <p className="mt-4 text-sm text-destructive">Adicione ao menos um item ao pedido.</p>
-          )}
-          {touched && !isEmpty && missingData && (
-            <p className="mt-4 text-sm text-destructive">Preencha seu nome e endereço.</p>
-          )}
+          <div role="alert">
+            {touched && isEmpty && (
+              <p className="mt-4 text-sm text-destructive">Adicione ao menos um item ao pedido.</p>
+            )}
+            {touched && !isEmpty && missingData && (
+              <p className="mt-4 text-sm text-destructive">Preencha seu nome e endereço.</p>
+            )}
+          </div>
 
           <button
             type="button"

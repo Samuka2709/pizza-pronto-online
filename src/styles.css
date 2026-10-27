@@ -1,5 +1,7 @@
 @import "tailwindcss" source(none);
 @source "../src";
+/* Os componentes shadcn de src/components/ui não são usados pelas páginas; não gerar CSS para eles. */
+@source not "./components/ui";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -117,6 +119,15 @@
   html {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
+    /* Evita que o cabeçalho fixo e a barra do pedido cubram o elemento em foco. */
+    scroll-padding-top: 5.5rem;
+    scroll-padding-bottom: 6rem;
+  }
+
+  /* Foco visível para quem navega pelo teclado. */
+  :focus-visible {
+    outline: 2px solid var(--gold-bright);
+    outline-offset: 3px;
   }
 
   body {
@@ -136,10 +147,10 @@
     touch-action: manipulation;
   }
 
-  /* Garante áreas de toque mínimas no mobile. */
+  /* Garante áreas de toque mínimas no mobile (44px). */
   a, button, [role="button"] {
-    min-height: 2.5rem;
-    min-width: 2.5rem;
+    min-height: 2.75rem;
+    min-width: 2.75rem;
   }
 }
 
@@ -184,7 +195,10 @@
   *,
   *::before,
   *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
@@ -206,6 +220,17 @@ body::before {
     radial-gradient(ellipse 60rem 40rem at 85% -5%, oklch(0.76 0.132 85 / 0.10), transparent 65%),
     radial-gradient(ellipse 50rem 40rem at -10% 50%, oklch(0.76 0.132 85 / 0.06), transparent 65%),
     radial-gradient(ellipse 55rem 35rem at 105% 105%, oklch(0.62 0.12 60 / 0.08), transparent 65%);
+}
+
+/* No celular os anéis cruzavam os títulos: ficam menores, mais para a borda e mais suaves. */
+@media (max-width: 639px) {
+  body::before {
+    background:
+      radial-gradient(circle at 112% 18%, transparent 0 9.9rem, oklch(0.76 0.132 85 / 0.12) 10rem 10.06rem, transparent 10.12rem),
+      radial-gradient(circle at -14% 82%, transparent 0 7.9rem, oklch(0.76 0.132 85 / 0.10) 8rem 8.06rem, transparent 8.12rem),
+      radial-gradient(ellipse 30rem 24rem at 90% -5%, oklch(0.76 0.132 85 / 0.10), transparent 65%),
+      radial-gradient(ellipse 26rem 22rem at -10% 55%, oklch(0.76 0.132 85 / 0.05), transparent 65%);
+  }
 }
 
 body::after {

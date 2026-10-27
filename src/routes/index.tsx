@@ -1,73 +1,74 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Clock, Flame, MapPin, Pizza, Truck } from "lucide-react";
 import heroPizza from "../assets/hero-lombinho.webp";
-import logo from "../assets/cerqueiras-logo.jpg.asset.json";
+import hero640 from "../assets/hero-lombinho-640.webp";
+import hero960 from "../assets/hero-lombinho-960.webp";
+import hero1280 from "../assets/hero-lombinho-1280.webp";
+import { OG_IMAGE, SITE_NAME, SITE_URL, pageHead } from "@/lib/site";
 
-const siteUrl = "https://pizza-pronto-online.vercel.app";
-const ogImage = `${siteUrl}/cerqueiras-logo.jpg`;
+// Versões menores da foto principal para o celular (o navegador escolhe pela largura da tela).
+const heroSrcSet = `${hero640} 640w, ${hero960} 960w, ${hero1280} 1280w, ${heroPizza} 1600w`;
+const heroSizes = "100vw";
+
+const head = pageHead({
+  path: "/",
+  title: "Cerqueira's Pizza — Pizzaria em Cururupe, Ilhéus/BA",
+  description:
+    "Feita com carinho, para reunir quem você ama. Pizzas tradicionais, especiais e doces em Cururupe, Ilhéus/BA. Delivery, terça a domingo das 18h às 22h.",
+  ogDescription:
+    "Ingredientes selecionados, sabor que fica. Delivery em Ilhéus/BA, terça a domingo das 18h às 22h.",
+});
+
+// Dados estruturados (schema.org) só com informações publicadas no próprio site.
+const restaurantJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "@id": `${SITE_URL}/#restaurante`,
+  name: SITE_NAME,
+  url: SITE_URL,
+  image: OG_IMAGE,
+  logo: `${SITE_URL}/cerqueiras-logo.jpg`,
+  slogan: "Feita com carinho, para reunir quem você ama.",
+  servesCuisine: "Pizza",
+  priceRange: "R$ 34,90 - R$ 69,90",
+  currenciesAccepted: "BRL",
+  paymentAccepted: "Pix, Cartão, Dinheiro",
+  telephone: "+55 73 99854-8191",
+  hasMenu: `${SITE_URL}/cardapio`,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Cururupe",
+    addressLocality: "Ilhéus",
+    addressRegion: "BA",
+    addressCountry: "BR",
+  },
+  areaServed: "Cururupe, Ilhéus - BA",
+  sameAs: ["https://www.instagram.com/cerqueiraspizza"],
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      opens: "18:00",
+      closes: "22:00",
+    },
+  ],
+};
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    meta: [
-      { title: "Cerqueira's Pizza — Pizzaria em Cururupe, Ilhéus/BA" },
-      {
-        name: "description",
-        content:
-          "Feita com carinho, para reunir quem você ama. Pizzas tradicionais, especiais e doces em Cururupe, Ilhéus/BA. Delivery, terça a domingo das 18h às 22h.",
-      },
-      { property: "og:title", content: "Cerqueira's Pizza — Pizzaria em Cururupe, Ilhéus/BA" },
-      {
-        property: "og:description",
-        content:
-          "Ingredientes selecionados, sabor que fica. Delivery em Ilhéus/BA, terça a domingo das 18h às 22h.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:image", content: ogImage },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: ogImage },
-    ],
+    meta: head.meta,
     links: [
-      { rel: "preload", as: "image", href: heroPizza, fetchpriority: "high" },
-      { rel: "canonical", href: "/" },
-    ],
-    scripts: [
       {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Restaurant",
-          name: "Cerqueira's Pizza",
-          image: ogImage,
-          servesCuisine: "Pizza",
-          priceRange: "R$ 34,90 - R$ 69,90",
-          telephone: "+55 73 99854-8191",
-          url: siteUrl,
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Ilhéus",
-            addressRegion: "BA",
-            addressCountry: "BR",
-            streetAddress: "Cururupe",
-          },
-          sameAs: ["https://www.instagram.com/cerqueiraspizza"],
-          openingHoursSpecification: [
-            {
-              "@type": "OpeningHoursSpecification",
-              dayOfWeek: [
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-                "Sunday",
-              ],
-              opens: "18:00",
-              closes: "22:00",
-            },
-          ],
-        }),
+        rel: "preload",
+        as: "image",
+        href: heroPizza,
+        imageSrcSet: heroSrcSet,
+        imageSizes: heroSizes,
+        fetchPriority: "high",
       },
+      ...head.links,
     ],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(restaurantJsonLd) }],
   }),
   component: Index,
 });
@@ -99,6 +100,8 @@ function Index() {
         <div className="absolute inset-0">
           <img
             src={heroPizza}
+            srcSet={heroSrcSet}
+            sizes={heroSizes}
             alt="Pizza de lombinho com cream cheese e geleia de amora da Cerqueira's Pizza"
             width={1600}
             height={1073}
@@ -130,7 +133,7 @@ function Index() {
               Delivery de terça a domingo, das 18h às 22h.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-                          <Link
+              <Link
                 to="/pedido"
                 className="rounded-full bg-primary px-7 py-3 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105"
               >
@@ -148,8 +151,10 @@ function Index() {
       </section>
 
       {/* Animated marquee bridge — decorativo */}
-      <section aria-hidden="true" className="relative overflow-hidden border-y border-gold/30 bg-secondary/50 py-10">
-
+      <section
+        aria-hidden="true"
+        className="relative overflow-hidden border-y border-gold/30 bg-secondary/50 py-10"
+      >
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-background to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-background to-transparent" />
 
@@ -158,19 +163,33 @@ function Index() {
           <div className="flex shrink-0 animate-marquee-left items-center gap-8 whitespace-nowrap">
             {[...Array(2)].map((_, i) => (
               <div key={i} className="flex items-center gap-8">
-                <span className="font-display text-3xl font-bold text-cream sm:text-5xl">Cerqueira&apos;s Pizza</span>
+                <span className="font-display text-3xl font-bold text-cream sm:text-5xl">
+                  Cerqueira&apos;s Pizza
+                </span>
                 <Pizza className="h-8 w-8 text-gold" />
-                <span className="font-display text-3xl font-bold text-gold sm:text-5xl">Lombinho com Cream Cheese</span>
+                <span className="font-display text-3xl font-bold text-gold sm:text-5xl">
+                  Lombinho com Cream Cheese
+                </span>
                 <Flame className="h-8 w-8 text-gold" />
-                <span className="font-display text-3xl font-bold text-cream sm:text-5xl">4 Queijos</span>
+                <span className="font-display text-3xl font-bold text-cream sm:text-5xl">
+                  4 Queijos
+                </span>
                 <Pizza className="h-8 w-8 text-gold" />
-                <span className="font-display text-3xl font-bold text-gold sm:text-5xl">À Moda da Casa</span>
+                <span className="font-display text-3xl font-bold text-gold sm:text-5xl">
+                  À Moda da Casa
+                </span>
                 <Truck className="h-8 w-8 text-gold" />
-                <span className="font-display text-3xl font-bold text-cream sm:text-5xl">Delivery em Ilhéus</span>
+                <span className="font-display text-3xl font-bold text-cream sm:text-5xl">
+                  Delivery em Ilhéus
+                </span>
                 <MapPin className="h-8 w-8 text-gold" />
-                <span className="font-display text-3xl font-bold text-gold sm:text-5xl">Cururupe · BA</span>
+                <span className="font-display text-3xl font-bold text-gold sm:text-5xl">
+                  Cururupe · BA
+                </span>
                 <Clock className="h-8 w-8 text-gold" />
-                <span className="font-display text-3xl font-bold text-cream sm:text-5xl">Ter a Dom · 18h — 22h</span>
+                <span className="font-display text-3xl font-bold text-cream sm:text-5xl">
+                  Ter a Dom · 18h — 22h
+                </span>
               </div>
             ))}
           </div>
@@ -181,15 +200,25 @@ function Index() {
           <div className="flex shrink-0 animate-marquee-right items-center gap-8 whitespace-nowrap">
             {[...Array(2)].map((_, i) => (
               <div key={i} className="flex items-center gap-8">
-                <span className="font-display text-2xl font-bold text-gold/80 sm:text-4xl">Massa artesanal</span>
+                <span className="font-display text-2xl font-bold text-gold/80 sm:text-4xl">
+                  Massa artesanal
+                </span>
                 <span className="font-display text-2xl font-bold text-cream/60 sm:text-4xl">•</span>
-                <span className="font-display text-2xl font-bold text-gold/80 sm:text-4xl">Ingredientes frescos</span>
+                <span className="font-display text-2xl font-bold text-gold/80 sm:text-4xl">
+                  Ingredientes frescos
+                </span>
                 <span className="font-display text-2xl font-bold text-cream/60 sm:text-4xl">•</span>
-                <span className="font-display text-2xl font-bold text-gold/80 sm:text-4xl">Sabor que fica</span>
+                <span className="font-display text-2xl font-bold text-gold/80 sm:text-4xl">
+                  Sabor que fica
+                </span>
                 <span className="font-display text-2xl font-bold text-cream/60 sm:text-4xl">•</span>
-                <span className="font-display text-2xl font-bold text-gold/80 sm:text-4xl">Feita com carinho</span>
+                <span className="font-display text-2xl font-bold text-gold/80 sm:text-4xl">
+                  Feita com carinho
+                </span>
                 <span className="font-display text-2xl font-bold text-cream/60 sm:text-4xl">•</span>
-                <span className="font-display text-2xl font-bold text-gold/80 sm:text-4xl">Para reunir quem você ama</span>
+                <span className="font-display text-2xl font-bold text-gold/80 sm:text-4xl">
+                  Para reunir quem você ama
+                </span>
                 <span className="font-display text-2xl font-bold text-cream/60 sm:text-4xl">•</span>
               </div>
             ))}
@@ -216,8 +245,12 @@ function Index() {
       {/* Featured pizzas */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <div className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">Especialidades</p>
-          <h2 className="mt-3 font-display text-4xl font-bold text-cream">As queridinhas da casa</h2>
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
+            Especialidades
+          </p>
+          <h2 className="mt-3 font-display text-4xl font-bold text-cream">
+            As queridinhas da casa
+          </h2>
           <div className="mx-auto mt-6 h-px max-w-xs hairline-gold" />
         </div>
 
@@ -289,7 +322,7 @@ function Index() {
             Monte seu pedido aqui e envie pelo WhatsApp. Delivery em Cururupe, Ilhéus.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-                     <Link
+            <Link
               to="/pedido"
               className="rounded-full bg-primary px-7 py-3 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105"
             >
