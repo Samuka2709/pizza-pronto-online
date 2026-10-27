@@ -1,7 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Clock, Flame, MapPin, Pizza, Truck } from "lucide-react";
 import heroPizza from "../assets/hero-lombinho.webp";
+import hero640 from "../assets/hero-lombinho-640.webp";
+import hero960 from "../assets/hero-lombinho-960.webp";
+import hero1280 from "../assets/hero-lombinho-1280.webp";
 import { OG_IMAGE as ogImage, SITE_URL as siteUrl } from "@/lib/site";
+
+// Versões menores da foto principal para o celular (o navegador escolhe pela largura da tela).
+const heroSrcSet = `${hero640} 640w, ${hero960} 960w, ${hero1280} 1280w, ${heroPizza} 1600w`;
+const heroSizes = "100vw";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,7 +31,14 @@ export const Route = createFileRoute("/")({
       { name: "twitter:image", content: ogImage },
     ],
     links: [
-      { rel: "preload", as: "image", href: heroPizza, fetchpriority: "high" },
+      {
+        rel: "preload",
+        as: "image",
+        href: heroPizza,
+        imageSrcSet: heroSrcSet,
+        imageSizes: heroSizes,
+        fetchPriority: "high",
+      },
       { rel: "canonical", href: "/" },
     ],
     scripts: [
@@ -89,6 +103,8 @@ function Index() {
         <div className="absolute inset-0">
           <img
             src={heroPizza}
+            srcSet={heroSrcSet}
+            sizes={heroSizes}
             alt="Pizza de lombinho com cream cheese e geleia de amora da Cerqueira's Pizza"
             width={1600}
             height={1073}
