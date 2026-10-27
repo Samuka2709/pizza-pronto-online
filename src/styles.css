@@ -119,6 +119,15 @@
   html {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
+    /* Evita que o cabeçalho fixo e a barra do pedido cubram o elemento em foco. */
+    scroll-padding-top: 5.5rem;
+    scroll-padding-bottom: 6rem;
+  }
+
+  /* Foco visível para quem navega pelo teclado. */
+  :focus-visible {
+    outline: 2px solid var(--gold-bright);
+    outline-offset: 3px;
   }
 
   body {
@@ -138,10 +147,10 @@
     touch-action: manipulation;
   }
 
-  /* Garante áreas de toque mínimas no mobile. */
+  /* Garante áreas de toque mínimas no mobile (44px). */
   a, button, [role="button"] {
-    min-height: 2.5rem;
-    min-width: 2.5rem;
+    min-height: 2.75rem;
+    min-width: 2.75rem;
   }
 }
 
@@ -186,7 +195,10 @@
   *,
   *::before,
   *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
