@@ -31,7 +31,10 @@ function Cardapio() {
   return (
     <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6">
       {/* Left decorative accent */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-20 lg:block">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-y-0 left-0 hidden w-20 lg:block"
+      >
         <div className="sticky top-1/2 flex flex-col items-center gap-5 pt-32">
           <span className="block text-[10px] font-semibold uppercase tracking-[0.3em] text-gold/60 [writing-mode:vertical-rl]">
             Sabor
@@ -46,7 +49,10 @@ function Cardapio() {
       </div>
 
       {/* Right decorative accent */}
-      <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-20 lg:block">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-y-0 right-0 hidden w-20 lg:block"
+      >
         <div className="sticky top-1/2 flex flex-col items-center gap-5 pt-32">
           <span className="block text-[10px] font-semibold uppercase tracking-[0.3em] text-gold/60 [writing-mode:vertical-rl]">
             Tradição

@@ -97,7 +97,7 @@ function Contato() {
               href="https://wa.me/5573998548191"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full bg-primary px-6 py-2.5 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105"
+              className="inline-flex items-center rounded-full bg-primary px-6 py-2.5 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105"
             >
               WhatsApp
             </a>
@@ -105,7 +105,7 @@ function Contato() {
               href="https://www.instagram.com/cerqueiraspizza?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-gold/50 px-6 py-2.5 text-sm font-semibold uppercase tracking-widest text-cream transition-colors hover:bg-gold hover:text-primary-foreground"
+              className="inline-flex items-center rounded-full border border-gold/50 px-6 py-2.5 text-sm font-semibold uppercase tracking-widest text-cream transition-colors hover:bg-gold hover:text-primary-foreground"
             >
               Instagram
             </a>
